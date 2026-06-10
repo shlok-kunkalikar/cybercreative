@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Cyber Creative — Careers</title>
+  <link rel="stylesheet" href="../Style/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --gold: #D6A852;
+      --gold-dim: rgba(214, 168, 82, 0.12);
+      --dark: #0a0a0a;
+      --charcoal: #111111;
+      --mid: rgba(255, 255, 255, 0.08);
+      --muted: rgba(255, 255, 255, 0.42);
+    }
+
+    #scrollProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: var(--gold);
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* ─── CAREERS SECTION ─── */
+    .careers-section {
+      background: var(--dark);
+      padding: 7rem 4vw 6rem;
+    }
+
+    .careers-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Intro row: stat counters + intro text side by side */
+    .careers-intro-row {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: center;
+      padding-bottom: 5rem;
+      border-bottom: 1px solid var(--mid);
+      margin-bottom: 4rem;
+    }
+
+    @media (max-width: 820px) {
+      .careers-intro-row {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding-bottom: 3rem;
+        margin-bottom: 3rem;
+      }
+    }
+
+    /* Stats */
+    .careers-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--mid);
+    }
+
+    .stat-item:first-child {
+      border-top: 1px solid var(--mid);
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.2rem;
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+
+    .stat-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Intro text */
+    .careers-intro-text {}
+
+    .careers-intro-text .section-label {
+      margin-bottom: 1.25rem;
+    }
+
+    .careers-intro-text h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 1.25rem;
+    }
+
+    .careers-intro-text p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      max-width: 480px;
+    }
+
+    .careers-location-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(214, 168, 82, 0.3);
+      padding: 0.4rem 0.85rem;
+    }
+
+    /* Section header above grid */
+    .careers-grid-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      gap: 1rem;
+    }
+
+    .careers-grid-header h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+
+    .careers-count {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Career Cards ── */
+    .careers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--mid);
+    }
+
+    @media (max-width: 900px) {
+      .careers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 540px) {
+      .careers-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .career-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: var(--dark);
+      padding: 2rem 1.75rem 1.75rem;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s ease;
+    }
+
+    .career-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+
+    .career-card:hover {
+      background: #111;
+    }
+
+    .career-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .career-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .career-card-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid rgba(214, 168, 82, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 0.95rem;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .career-card:hover .career-card-icon {
+      background: var(--gold-dim);
+      border-color: var(--gold);
+    }
+
+    .career-badge {
+      font-size: 0.6rem;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.6rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .career-badge--part {
+      border-color: rgba(255, 255, 255, 0.25);
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .career-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      transition: color 0.25s;
+    }
+
+    .career-card:hover .career-card-title {
+      color: var(--gold);
+    }
+
+    .career-card-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0;
+      flex: 1;
+    }
+
+    .career-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .career-tags span {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.05em;
+      padding: 0.18rem 0.5rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.45);
+      text-transform: uppercase;
+    }
+
+    .career-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--mid);
+    }
+
+    .career-card-footer-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: gap 0.25s;
+    }
+
+    .career-card:hover .career-card-footer-text {
+      gap: 0.7rem;
+    }
+
+    .career-card-footer-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.1);
+      line-height: 1;
+    }
+
+    /* ── CTA ROW ── */
+    .careers-cta-row {
+      margin-top: 1px;
+      background: var(--mid);
+      padding: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .careers-cta-row {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    .careers-cta-row p {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin: 0;
+    }
+
+    .careers-cta-row p span {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-top: 0.25rem;
+    }
+
+    /* ── VALUES SECTION ── */
+    .values-section {
+      padding: 8rem 4vw;
+      background: var(--charcoal);
+      border-top: 1px solid var(--mid);
+    }
+
+    .values-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .values-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+
+    @media (max-width: 720px) {
+      .values-header {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .values-header p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--mid);
+    }
+
+    @media (max-width: 720px) {
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .value-card {
+      background: var(--charcoal);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .value-card:hover {
+      background: #161616;
+    }
+
+    .value-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .value-card-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: rgba(214, 168, 82, 0.08);
+      line-height: 1;
+      margin-bottom: 1.25rem;
+      transition: color 0.3s;
+    }
+
+    .value-card:hover .value-card-num {
+      color: rgba(214, 168, 82, 0.15);
+    }
+
+    .wc-icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      border: 1px solid rgba(214, 168, 82, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+      transition: background 0.3s;
+    }
+
+    .value-card:hover .wc-icon {
+      background: var(--gold-dim);
+    }
+
+    .wc-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.65rem;
+    }
+
+    .wc-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="page-transition"></div>
+  <div id="scrollProgress"></div>
+
+  <!-- PRELOADER -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <img src="https://cybercreative.in/wp-content/uploads/2022/07/logo_Asset-1.png" alt="Cyber Creative"
+        class="preloader-logo" />
+      <div class="preloader-bar"><span></span></div>
+    </div>
+  </div>
+
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <a href="index.html"><img src="https://cybercreative.in/wp-content/uploads/2022/07/logo_Asset-1.png"
+          alt="Cyber Creative" /></a>
+      <a href="index.html"><span class="nav-brand-name">Cyber Creative</span></a>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="services.html" class="nav-link">What We Do</a>
+      <a href="portfolio.html" class="nav-link">Portfolio</a>
+      <a href="why-us.html" class="nav-link">Why Us</a>
+      <a href="careers.html" class="nav-link active">Careers</a>
+      <a href="connect.html" class="nav-link nav-cta">Connect Now</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- PAGE BANNER -->
+  <div class="page-banner">
+    <div class="page-banner-bg-grid"></div>
+    <div class="page-banner-noise"></div>
+    <div class="page-banner-content">
+      <div class="section-label"><span>05</span> Join Our Team</div>
+      <h1 class="page-banner-title">
+        Build the <span class="yellow-text">Future.</span>
+      </h1>
+      <p class="page-banner-sub">Be part of a passionate team building the digital future from Goa.</p>
+    </div>
+  </div>
+
+  <!-- CAREERS SECTION -->
+  <section class="careers-section">
+    <div class="careers-inner">
+
+      <!-- Intro row -->
+      <div class="careers-intro-row">
+        <!-- Stats -->
+        <div class="careers-stats reveal">
+          <div class="stat-item">
+            <div class="stat-num">5+</div>
+            <div class="stat-label">Open<br>Positions</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Goa-based<br>Roles</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">3+</div>
+            <div class="stat-label">Years of<br>Building</div>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="careers-intro-text reveal reveal-d1">
+          <div class="section-label"><span>05</span> Join Our Team</div>
+          <h2>We build things<br><span class="yellow-text">people love.</span></h2>
+          <p>We're a fast-moving, tight-knit team that cares deeply about craft. If you're talented, curious, and driven
+            to build digital products that matter — this is your place.</p>
+          <div class="careers-location-badge">
+            <i class="fa-solid fa-location-dot"></i> All roles based in Goa, India
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid header -->
+      <div class="careers-grid-header reveal">
+        <h3>Open Positions</h3>
+        <span class="careers-count">5 roles available</span>
+      </div>
+
+      <!-- Cards grid -->
+      <div class="careers-grid">
+
+        <a href="connect.html" class="career-card reveal">
+          <div class="career-card-header">
+            <div class="career-card-icon"><i class="fa-solid fa-code"></i></div>
+            <span class="career-badge">Full Time</span>
+          </div>
+          <div class="career-card-title">Frontend Developer</div>
+          <p class="career-card-desc">Craft pixel-perfect interfaces and interactive experiences that users love.</p>
+          <div class="career-tags">
+            <span>React</span><span>CSS</span><span>JavaScript</span><span>TypeScript</span>
+          </div>
+          <div class="career-card-footer">
+            <div class="career-card-footer-text">Apply Now <i class="fa-solid fa-arrow-right"></i></div>
+            <div class="career-card-footer-num">01</div>
+          </div>
+        </a>
+
+        <a href="connect.html" class="career-card reveal reveal-d1">
+          <div class="career-card-header">
+            <div class="career-card-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+            <span class="career-badge">Full Time</span>
+          </div>
+          <div class="career-card-title">UI/UX Designer</div>
+          <p class="career-card-desc">Shape intuitive journeys and visual systems that set our products apart.</p>
+          <div class="career-tags">
+            <span>Figma</span><span>Adobe XD</span><span>Prototyping</span><span>User Research</span>
+          </div>
+          <div class="career-card-footer">
+            <div class="career-card-footer-text">Apply Now <i class="fa-solid fa-arrow-right"></i></div>
+            <div class="career-card-footer-num">02</div>
+          </div>
+        </a>
+
+        <a href="connect.html" class="career-card reveal reveal-d2">
+          <div class="career-card-header">
+            <div class="career-card-icon"><i class="fa-solid fa-server"></i></div>
+            <span class="career-badge">Full Time</span>
+          </div>
+          <div class="career-card-title">Backend Developer</div>
+          <p class="career-card-desc">Build robust APIs and data systems that power everything behind the scenes.</p>
+          <div class="career-tags">
+            <span>Node.js</span><span>PHP</span><span>MySQL</span><span>APIs</span>
+          </div>
+          <div class="career-card-footer">
+            <div class="career-card-footer-text">Apply Now <i class="fa-solid fa-arrow-right"></i></div>
+            <div class="career-card-footer-num">03</div>
+          </div>
+        </a>
+
+        <a href="connect.html" class="career-card reveal reveal-d3">
+          <div class="career-card-header">
+            <div class="career-card-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <span class="career-badge career-badge--part">Part Time</span>
+          </div>
+          <div class="career-card-title">SEO Specialist</div>
+          <p class="career-card-desc">Drive organic growth through smart content strategy and search optimisation.</p>
+          <div class="career-tags">
+            <span>SEO</span><span>Google Analytics</span><span>Content Strategy</span>
+          </div>
+          <div class="career-card-footer">
+            <div class="career-card-footer-text">Apply Now <i class="fa-solid fa-arrow-right"></i></div>
+            <div class="career-card-footer-num">04</div>
+          </div>
+        </a>
+
+        <a href="connect.html" class="career-card reveal reveal-d4">
+          <div class="career-card-header">
+            <div class="career-card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+            <span class="career-badge">Full Time</span>
+          </div>
+          <div class="career-card-title">Mobile Developer</div>
+          <p class="career-card-desc">Build fast, beautiful apps for iOS and Android that people actually enjoy using.
+          </p>
+          <div class="career-tags">
+            <span>React Native</span><span>iOS</span><span>Android</span><span>Flutter</span>
+          </div>
+          <div class="career-card-footer">
+            <div class="career-card-footer-text">Apply Now <i class="fa-solid fa-arrow-right"></i></div>
+            <div class="career-card-footer-num">05</div>
+          </div>
+        </a>
+
+        <!-- CTA card inline in grid -->
+        <div class="careers-cta-row reveal">
+          <p>
+            Don't see your role?
+            <span>We're always open to talented people.</span>
+          </p>
+          <a href="mailto:connect@cybercreative.in" class="btn btn-primary">
+            Send Resume <i class="fa-solid fa-paper-plane"></i>
+          </a>
+        </div>
+
+      </div><!-- /careers-grid -->
+
+    </div>
+  </section>
+
+  <!-- VALUES SECTION -->
+  <section class="values-section">
+    <div class="values-inner">
+      <div class="values-header">
+        <div>
+          <div class="section-label reveal"><span>—</span> Why Join Us</div>
+          <h2 class="section-title reveal reveal-d1">
+            Built for<br><span style="color:var(--gold)">builders.</span>
+          </h2>
+        </div>
+        <p class="reveal reveal-d2">We don't just talk about culture — we build it into how we work every day. Small
+          team, real ownership, genuine growth.</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card reveal reveal-d1">
+          <div class="value-card-num">01</div>
+          <div class="wc-icon"><i class="fa-solid fa-rocket"></i></div>
+          <div class="wc-title">Meaningful Work</div>
+          <p class="wc-desc">Every project matters. You'll build things that real people use, every day — not internal
+            tools that gather dust.</p>
+        </div>
+        <div class="value-card reveal reveal-d2">
+          <div class="value-card-num">02</div>
+          <div class="wc-icon"><i class="fa-solid fa-users"></i></div>
+          <div class="wc-title">Great Team</div>
+          <p class="wc-desc">A tight-knit, talented crew in Goa — collaborative, supportive, and genuinely creative. No
+            politics, just craft.</p>
+        </div>
+        <div class="value-card reveal reveal-d3">
+          <div class="value-card-num">03</div>
+          <div class="wc-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="wc-title">Growth Focused</div>
+          <p class="wc-desc">We invest in learning and give you room to lead. Your skills and responsibilities grow here
+            — that's a promise.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://cybercreative.in/wp-content/uploads/2022/07/logo_Asset-1.png" alt="Cyber Creative"
+          class="footer-logo" />
+        <p>We design web strategies &amp; develop to create valuable services for our Clients. Based in Goa, India.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/cyber.creative_?igshid=YmMyMTA2M2Y=" target="_blank" aria-label="Instagram"><i
+              class="fa-brands fa-instagram"></i></a>
+          <a href="#" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://twitter.com/cybercreative_" target="_blank" aria-label="Twitter"><i
+              class="fa-brands fa-twitter"></i></a>
+          <a href="https://www.google.com/search?q=cyber+creative+goa" target="_blank" aria-label="Google"><i
+              class="fa-brands fa-google"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a><a href="about.html">About</a>
+        <a href="services.html">Services</a><a href="portfolio.html">Portfolio</a>
+        <a href="why-us.html">Why Us</a><a href="careers.html">Careers</a>
+        <a href="connect.html">Connect</a>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <a href="services.html">Web Development</a>
+        <a href="services.html">App Development</a>
+        <a href="services.html">UI/UX Design</a>
+        <a href="services.html">Technical Support</a>
+        <a href="services.html">Hardware Sales</a>
+        <a href="services.html">Software Consultancy</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p><a href="mailto:connect@cybercreative.in"><i class="fa-solid fa-envelope"></i> connect@cybercreative.in</a>
+        </p>
+        <p><a href="tel:+919922424405"><i class="fa-solid fa-phone"></i> +91 9922424405</a></p>
+        <p><a href="https://www.google.com/maps?q=G26+Vikrant+Complex,+Malbhat,+Margao,+Goa+403601" target="_blank"><i
+              class="fa-solid fa-location-dot"></i> G26-Vikrant Complex, Malbhat, Margao, Goa 403601</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2022 <a href="index.html">Cyber Creative</a> | Designed &amp; Developed by <a
+          href="index.html">Cyber Creative</a></p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <script src="../script/script.js"></script>
+</body>
+
+</html>

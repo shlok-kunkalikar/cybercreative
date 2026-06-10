@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hardware Sales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        :root {
+            --gold: #f5c518;
+            --black: #0e0e0e;
+            --card-bg: #1a1a1a;
+            --text: #ccc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0e0e0e;
+            color: #fff;
+            font-family: 'Syne', sans-serif;
+            padding: 2.5rem 2.5rem 2.5rem 3rem;
+        }
+
+        main {
+            flex: 1;
+            padding: 4rem 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .arc-panel-num {
+            font-size: 5rem;
+            font-weight: 800;
+            color: rgba(245, 197, 24, 0.08);
+            line-height: 1;
+            margin-bottom: -1.5rem;
+        }
+
+        .arc-panel-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .arc-panel-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .arc-panel-tagline {
+            font-style: italic;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .arc-panel-desc {
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .arc-panel-features {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .arc-panel-features li {
+            background: rgba(245, 197, 24, 0.08);
+            border: 1px solid rgba(245, 197, 24, 0.2);
+            color: var(--gold);
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+        }
+
+        .arc-panel-sub-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .arc-sub-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 1rem;
+        }
+
+        .arc-sub-card i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .arc-sub-card h5 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .arc-sub-card p {
+            font-size: 0.75rem;
+            color: var(--text);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.75rem;
+            background: var(--gold);
+            color: #000;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="arc-panel-num">04</div>
+    <div class="arc-panel-label">04 — Service</div>
+    <h2 class="arc-panel-title">Hardware Sales</h2>
+    <p class="arc-panel-tagline">"The right hardware for every ambition."</p>
+    <p class="arc-panel-desc">Workstations, gaming rigs, mining builds, surveillance systems, and smart home automation
+        — all built to spec, all built to last.</p>
+    <ul class="arc-panel-features">
+        <li>Workstation Computers</li>
+        <li>Gaming PCs &amp; Builds</li>
+        <li>Cryptocurrency Mining Rigs</li>
+        <li>Surveillance &amp; Home Automation</li>
+    </ul>
+    <div class="arc-panel-sub-cards">
+        <div class="arc-sub-card"><i class="fa-solid fa-desktop"></i>
+            <h5>Workstations</h5>
+            <p>Best-in-class professional setups.</p>
+        </div>
+        <div class="arc-sub-card"><i class="fa-solid fa-gamepad"></i>
+            <h5>Gaming PCs</h5>
+            <p>High-performance gaming builds.</p>
+        </div>
+        <div class="arc-sub-card"><i class="fa-solid fa-bitcoin-sign"></i>
+            <h5>Mining Rigs</h5>
+            <p>Custom crypto rigs to your specs.</p>
+        </div>
+        <div class="arc-sub-card"><i class="fa-solid fa-house-signal"></i>
+            <h5>Smart Home</h5>
+            <p>Full home automation anywhere.</p>
+        </div>
+    </div>
+    <a href="../../connect.html" class="btn">Shop Hardware</a>
+</body>
+
+</html>
