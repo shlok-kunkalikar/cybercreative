@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Cyber Creative — Technical Support</title>
+  <link rel="stylesheet" href="../Style/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    #scrollProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: var(--gold);
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Service detail section ── */
+    .service-detail-section {
+      padding: 4rem 4vw 6rem;
+    }
+
+    .service-detail-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #141414;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 3rem;
+    }
+
+    .service-panel-num {
+      font-size: 5rem;
+      font-weight: 800;
+      color: rgba(232, 200, 74, 0.08);
+      line-height: 1;
+      margin-bottom: -1.5rem;
+      font-family: var(--font-display, 'Syne', sans-serif);
+    }
+
+    .service-panel-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      font-family: var(--font-mono);
+    }
+
+    .service-panel-title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: var(--ivory, #fff);
+    }
+
+    .service-panel-tagline {
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .service-panel-desc {
+      color: var(--dim, #ccc);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      max-width: 720px;
+    }
+
+    .service-panel-features {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      padding: 0;
+    }
+
+    .service-panel-features li {
+      background: rgba(232, 200, 74, 0.08);
+      border: 1px solid rgba(232, 200, 74, 0.2);
+      color: var(--gold);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+    }
+
+    .service-panel-sub-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .service-sub-card {
+      background: #1a1a1a;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .service-sub-card i {
+      color: var(--gold);
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .service-sub-card h5 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      color: var(--ivory, #fff);
+    }
+
+    .service-sub-card p {
+      font-size: 0.78rem;
+      color: var(--dim, #ccc);
+      line-height: 1.5;
+    }
+
+    .service-cta-btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: var(--gold);
+      color: #000;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .service-cta-btn:hover {
+      background: #fff;
+    }
+
+    .service-other-links {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .service-other-links a {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim, #ccc);
+      border: 1px solid var(--mid, rgba(255,255,255,0.1));
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .service-other-links a:hover,
+    .service-other-links a.active {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    /* ── Footer (matches services.html) ── */
+    .footer {
+      background: var(--black);
+      border-top: 1px solid var(--mid);
+      padding: 6rem 4vw 2rem;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.4fr;
+      gap: 4rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--mid);
+    }
+
+    .footer-logo {
+      width: 44px;
+      filter: brightness(0) invert(1);
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: var(--dim);
+      line-height: 1.7;
+      max-width: 280px;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-socials a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--mid);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .footer-socials a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(232, 200, 74, 0.06);
+    }
+
+    .footer-links h4,
+    .footer-contact h4 {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--dim);
+      margin-bottom: 0.7rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--ivory);
+    }
+
+    .footer-contact p {
+      font-size: 0.82rem;
+      color: var(--dim);
+      margin-bottom: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .footer-contact a {
+      color: var(--dim);
+      transition: color 0.2s;
+    }
+
+    .footer-contact a:hover {
+      color: var(--ivory);
+    }
+
+    .footer-contact i {
+      color: var(--gold);
+      margin-right: 0.4rem;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.72rem;
+      color: var(--dim);
+      font-family: var(--font-mono);
+    }
+
+    .footer-bottom a {
+      color: var(--gold);
+    }
+
+    @media (max-width: 860px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-detail-container {
+        padding: 1.5rem;
+      }
+    }
+
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    html {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="page-transition"></div>
+  <div id="scrollProgress"></div>
+  <div id="preloader">
+    <div class="preloader-inner">
+      <img src="https://cybercreative.in/wp-content/uploads/2022/07/logo_Asset-1.png" alt="Cyber Creative"
+        class="preloader-logo" />
+      <div class="preloader-bar"><span></span></div>
+    </div>
+  </div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <nav id="navbar">
+    <div class="nav-logo">
+      <a href="../index.html"><img src="https://cybercreative.in/wp-content/uploads/2022/07/logo_Asset-1.png"
+          alt="Cyber Creative" /></a>
+      <a href="../index.html"><span class="nav-brand-name">Cyber Creative</span></a>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html" class="nav-link">Home</a>
+      <a href="../about.html" class="nav-link">About</a>
+      <a href="../services.html" class="nav-link active">What We Do</a>
+      <a href="../portfolio.html" class="nav-link">Portfolio</a>
+      <a href="../why-us.html" class="nav-link">Why Us</a>
+      <a href="../careers.html" class="nav-link">Careers</a>
+      <a href="../connect.html" class="nav-link nav-cta">Connect Now</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="page-banner">
+    <div class="page-banner-bg-grid"></div>
+    <div class="page-banner-noise"></div>
+    <div class="page-banner-content">
+      <div class="section-label"><span>03</span> Service</div>
+      <h1 class="page-banner-title">Technical <span class="yellow-text">Support.</span></h1>
+      <p class="page-banner-sub">"Keep your business running, always."</p>
+    </div>
+  </div>
+
+  <!-- ═══ SERVICE DETAIL SECTION ═══ -->
+  <section class="service-detail-section">
+    <div class="service-detail-container">
+      <div class="service-panel-num">03</div>
+      <div class="service-panel-label">03 — Service</div>
+      <h2 class="service-panel-title">Technical Support</h2>
+      <p class="service-panel-tagline">"Keep your business running, always."</p>
+      <p class="service-panel-desc">From data management to cyber hygiene — comprehensive technical backbone so you can focus on growth, not downtime.</p>
+      <ul class="service-panel-features">
+        <li>Data Management</li>
+        <li>Data Recovery</li>
+        <li>Networking &amp; Optimisation</li>
+        <li>Cyber Hygiene Consultancy</li>
+      </ul>
+      <div class="service-panel-sub-cards">
+        <div class="service-sub-card"><i class="fa-solid fa-database"></i>
+          <h5>Data Mgmt</h5>
+          <p>Secure, fast database systems.</p>
+        </div>
+        <div class="service-sub-card"><i class="fa-solid fa-hard-drive"></i>
+          <h5>Recovery</h5>
+          <p>Critical data always recoverable.</p>
+        </div>
+        <div class="service-sub-card"><i class="fa-solid fa-network-wired"></i>
+          <h5>Networking</h5>
+          <p>Fully optimised connectivity.</p>
+        </div>
+        <div class="service-sub-card"><i class="fa-solid fa-shield-halved"></i>
+          <h5>Cyber Hygiene</h5>
+          <p>Security for corporate data.</p>
+        </div>
+      </div>
+      <a href="../connect.html" class="service-cta-btn">Get Support</a>
+    </div>
+
+    <div class="service-other-links">
+      <a href="page-web.html">Web Development</a>
+      <a href="page-app.html">App Development</a>
+      <a href="page-tech.html" class="active">Technical Support</a>
+      <a href="page-hardware.html">Hardware Sales</a>
+      <a href="page-software.html">Software Consultancy</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://cybercreative.in/wp-content/uploads/2022/07/logo_Asset-1.png" alt="Cyber Creative"
+          class="footer-logo" />
+        <p>We design web strategies &amp; develop to create valuable services for our Clients. Based in Goa, India.</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com/cyber.creative_?igshid=YmMyMTA2M2Y=" target="_blank" aria-label="Instagram"><i
+              class="fa-brands fa-instagram"></i></a>
+          <a href="#" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://twitter.com/cybercreative_" target="_blank" aria-label="Twitter"><i
+              class="fa-brands fa-twitter"></i></a>
+          <a href="https://www.google.com/search?q=cyber+creative+goa" target="_blank" aria-label="Google"><i
+              class="fa-brands fa-google"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../services.html">Services</a>
+        <a href="../portfolio.html">Portfolio</a>
+        <a href="../why-us.html">Why Us</a>
+        <a href="../careers.html">Careers</a>
+        <a href="../connect.html">Connect</a>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <a href="page-web.html">Web Development</a>
+        <a href="page-app.html">App Development</a>
+        <a href="page-tech.html">Technical Support</a>
+        <a href="page-hardware.html">Hardware Sales</a>
+        <a href="page-software.html">Software Consultancy</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p><a href="mailto:connect@cybercreative.in"><i class="fa-solid fa-envelope"></i> connect@cybercreative.in</a>
+        </p>
+        <p><a href="tel:+919922424405"><i class="fa-solid fa-phone"></i> +91 9922424405</a></p>
+        <p><a href="https://www.google.com/maps?q=G26+Vikrant+Complex,+Malbhat,+Margao,+Goa+403601" target="_blank"><i
+              class="fa-solid fa-location-dot"></i> G26-Vikrant Complex, Malbhat, Margao, Goa 403601</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2022 <a href="../index.html">Cyber Creative</a> | Designed &amp; Developed by <a
+          href="../index.html">Cyber Creative</a></p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <script src="../script/script.js"></script>
+</body>
+
+</html>
