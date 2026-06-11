@@ -1360,8 +1360,24 @@ body.cursor-view  .cursor-outline {
     grid-template-columns: 1fr;
     direction: ltr !important;
   }
-  .case-img-wrap { aspect-ratio: 16/9; min-height: 280px; }
-  .case-info { padding: 3rem 4vw; }
+  .case-img-wrap { aspect-ratio: 16/9; min-height: 220px; height: auto; }
+  .case-info { padding: 2.5rem 6vw; }
+  .case-desc { max-width: none; }
+  .case-meta { gap: 1.5rem; flex-wrap: wrap; }
+}
+
+@media (max-width: 480px) {
+  .case-img-wrap { aspect-ratio: 4/3; min-height: 200px; }
+  .case-info { padding: 2rem 6vw; }
+  .case-meta { gap: 1.25rem 2rem; }
+  .case-meta-item { min-width: 40%; }
+  .portfolio-filter-bar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    padding: 2rem 4vw 0;
+  }
+  .pf-btn { padding: 0.85rem 1.25rem; white-space: nowrap; flex-shrink: 0; }
 }
 
 /* portfolio CTA strip */
