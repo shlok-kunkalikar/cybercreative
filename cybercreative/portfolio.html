@@ -4,23 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Cyber Creative — Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="Style/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    #scrollProgress {
+      position: fixed; top: 0; left: 0;
+      height: 2px; width: 0;
+      background: var(--gold);
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+  </style>
 </head>
 <body>
+  <div id="page-transition"></div>
+  <div id="scrollProgress"></div>
 
   <!-- PRELOADER -->
   <div id="preloader">
     <div class="preloader-inner">
-      <img src="https://cybercreative.in/wp-content/uploads/2022/07/logo_Asset-1.png" alt="Cyber Creative Logo" class="preloader-logo" />
+      <img src="https://cybercreative.in/wp-content/uploads/2022/07/logo_Asset-1.png" alt="Cyber Creative" class="preloader-logo" />
       <div class="preloader-bar"><span></span></div>
     </div>
   </div>
 
-  <!-- CURSOR -->
   <div class="cursor-dot"></div>
   <div class="cursor-outline"></div>
 
@@ -44,118 +54,261 @@
     </button>
   </nav>
 
-  <!-- PAGE HERO BANNER -->
+  <!-- PAGE BANNER -->
   <div class="page-banner">
     <div class="page-banner-bg-grid"></div>
     <div class="page-banner-noise"></div>
     <div class="page-banner-content">
       <div class="section-label"><span>03</span> Our Work</div>
-      <h1 class="page-banner-title">Our <span class="yellow-text">Work</span></h1>
+      <h1 class="page-banner-title">
+        Selected <span class="yellow-text">Work.</span>
+      </h1>
       <p class="page-banner-sub">Real projects. Real results. Real impact.</p>
     </div>
   </div>
 
-  <!-- PORTFOLIO SECTION -->
-  <section id="portfolio" class="portfolio-section watermark-section">
-    <div class="section-watermark"><img src="https://cybercreative.in/wp-content/uploads/2022/07/logo_Asset-1.png" alt="" /></div>
+  <!-- ══════════════════════════════════════════
+       CASE STUDIES
+  ══════════════════════════════════════════ -->
+  <!-- FILTER BAR -->
+  <div class="portfolio-filter-bar">
+    <button class="pf-btn active" data-filter="all">All</button>
+    <button class="pf-btn" data-filter="web">Web Dev</button>
+    <button class="pf-btn" data-filter="uiux">UI/UX Design</button>
+  </div>
 
-    <!-- Filter Buttons -->
-    <div class="portfolio-filters">
-      <button class="pfilt active" data-filter="all">All</button>
-      <button class="pfilt" data-filter="web">Web Dev</button>
-      <button class="pfilt" data-filter="uiux">UI/UX</button>
-    </div>
+  <div class="portfolio-cases" id="portfolioCases">
 
-    <div class="portfolio-grid">
-      <div class="portfolio-item" data-cat="web">
-        <div class="portfolio-img-wrap">
-          <div class="port-img-slot">
-            <img src="assets/flash.avif" alt="Flashlab Creative" class="port-img">
-          </div>
-          <div class="port-overlay">
-            <h3>Flashlab Creative</h3>
-            <p>Web Development for a Creative Marketing Agency</p>
-            <a href="https://flashlabcreative.com" target="_blank" rel="noopener" class="port-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-          </div>
+    <!-- 01 Flashlab -->
+    <div class="case-study" data-cat="web">
+      <div class="case-img-wrap">
+        <img src="assets/flash.avif" alt="Flashlab Creative" class="case-img clip-reveal visible" />
+        <div class="case-view-overlay">
+          <a href="https://flashlabcreative.com" target="_blank" rel="noopener" class="case-view-btn">
+            Visit <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.5rem;margin-left:0.2rem;"></i>
+          </a>
         </div>
-        <div class="port-tag">Web Development</div>
       </div>
-
-      <div class="portfolio-item" data-cat="web">
-        <div class="portfolio-img-wrap">
-          <div class="port-img-slot">
-            <img src="assets/rick.jpeg" alt="Club Ricky's" class="port-img">
+      <div class="case-info">
+        <div class="case-num reveal">01 — Project</div>
+        <h2 class="case-title reveal reveal-d1">Flashlab Creative</h2>
+        <div class="case-cat reveal reveal-d2">Web Development</div>
+        <p class="case-desc reveal reveal-d2">
+          A full digital presence for a forward-thinking creative marketing agency —
+          built for speed, built to impress.
+        </p>
+        <div class="case-meta reveal reveal-d3">
+          <div class="case-meta-item">
+            <span class="case-meta-label">Category</span>
+            <span class="case-meta-val">Web Dev</span>
           </div>
-          <div class="port-overlay">
-            <h3>Club Ricky's</h3>
-            <p>Web Development for a Club</p>
-            <a href="https://clubrickysgoa.com/" target="_blank" rel="noopener" class="port-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Year</span>
+            <span class="case-meta-val">2024</span>
           </div>
-        </div>
-        <div class="port-tag">Web Development</div>
-      </div>
-
-      <div class="portfolio-item" data-cat="web">
-        <div class="portfolio-img-wrap">
-          <div class="port-img-slot">
-            <img src="assets/str.jpeg" alt="Strobe Nightlife" class="port-img">
-          </div>
-          <div class="port-overlay">
-            <h3>Strobe Nightlife</h3>
-            <p>Web Dev for Nightlife Label &amp; Event Discovery Platform</p>
-            <a href="https://www.strobenightlife.com/" target="_blank" rel="noopener" class="port-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Stack</span>
+            <span class="case-meta-val">HTML · CSS · JS</span>
           </div>
         </div>
-        <div class="port-tag">Web Development</div>
-      </div>
-
-      <div class="portfolio-item" data-cat="web">
-        <div class="portfolio-img-wrap">
-          <div class="port-img-slot">
-            <img src="assets/para.avif" alt="Parashoot" class="port-img">
-          </div>
-          <div class="port-overlay">
-            <h3>Parashoot Studio</h3>
-            <p>Web Development for Flashlab Creative's Content Clan</p>
-            <a href="https://parashootstudio.com" target="_blank" rel="noopener" class="port-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-          </div>
-        </div>
-        <div class="port-tag">Web Development</div>
-      </div>
-
-      <div class="portfolio-item" data-cat="uiux">
-        <div class="portfolio-img-wrap">
-          <div class="port-img-slot">
-            <img src="assets/stop.jpeg" alt="Travel Stop Goa" class="port-img">
-          </div>
-          <div class="port-overlay">
-            <h3>Travel Stop Goa</h3>
-            <p>Web Dev &amp; UI/UX Design for a Travel Company</p>
-            <a href="https://travelstopgoa.com/" target="_blank" rel="noopener" class="port-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-          </div>
-        </div>
-        <div class="port-tag">Web Dev &amp; UI/UX design</div>
-      </div>
-
-      <div class="portfolio-item" data-cat="uiux">
-        <div class="portfolio-img-wrap">
-          <div class="port-img-slot">
-            <img src="assets/rtrust.jpeg" alt="Reginaldo Trust" class="port-img">
-          </div>
-          <div class="port-overlay">
-            <h3>Reginaldo Trust</h3>
-            <p>Web Dev &amp; UI/UX Design for a Trust</p>
-            <a href="https://reginaldotrust.org/" target="_blank" rel="noopener" class="port-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-          </div>
-        </div>
-        <div class="port-tag">Web Dev &amp; UI/UX design</div>
+        <a href="https://flashlabcreative.com" target="_blank" rel="noopener" class="case-link reveal reveal-d4">
+          View Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
       </div>
     </div>
-  </section>
+
+    <!-- 02 Club Ricky's -->
+    <div class="case-study" data-cat="web">
+      <div class="case-img-wrap">
+        <img src="assets/rick.jpeg" alt="Club Ricky's" class="case-img clip-reveal visible" />
+        <div class="case-view-overlay">
+          <a href="https://clubrickysgoa.com/" target="_blank" rel="noopener" class="case-view-btn">
+            Visit <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.5rem;margin-left:0.2rem;"></i>
+          </a>
+        </div>
+      </div>
+      <div class="case-info">
+        <div class="case-num reveal">02 — Project</div>
+        <h2 class="case-title reveal reveal-d1">Club Ricky's</h2>
+        <div class="case-cat reveal reveal-d2">Web Development</div>
+        <p class="case-desc reveal reveal-d2">
+          A vibrant nightlife website for one of Goa's most iconic clubs — energy, atmosphere, and bookings all in one place.
+        </p>
+        <div class="case-meta reveal reveal-d3">
+          <div class="case-meta-item">
+            <span class="case-meta-label">Category</span>
+            <span class="case-meta-val">Web Dev</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Year</span>
+            <span class="case-meta-val">2023</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Client</span>
+            <span class="case-meta-val">Club Ricky's Goa</span>
+          </div>
+        </div>
+        <a href="https://clubrickysgoa.com/" target="_blank" rel="noopener" class="case-link reveal reveal-d4">
+          View Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- 03 Strobe -->
+    <div class="case-study" data-cat="web">
+      <div class="case-img-wrap">
+        <img src="assets/str.jpeg" alt="Strobe Nightlife" class="case-img clip-reveal visible" />
+        <div class="case-view-overlay">
+          <a href="https://www.strobenightlife.com/" target="_blank" rel="noopener" class="case-view-btn">
+            Visit <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.5rem;margin-left:0.2rem;"></i>
+          </a>
+        </div>
+      </div>
+      <div class="case-info">
+        <div class="case-num reveal">03 — Project</div>
+        <h2 class="case-title reveal reveal-d1">Strobe Nightlife</h2>
+        <div class="case-cat reveal reveal-d2">Web Development</div>
+        <p class="case-desc reveal reveal-d2">
+          An event discovery platform and nightlife label site — fusing brand identity with a seamless event browsing experience.
+        </p>
+        <div class="case-meta reveal reveal-d3">
+          <div class="case-meta-item">
+            <span class="case-meta-label">Category</span>
+            <span class="case-meta-val">Web Dev</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Year</span>
+            <span class="case-meta-val">2024</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Type</span>
+            <span class="case-meta-val">Event Platform</span>
+          </div>
+        </div>
+        <a href="https://www.strobenightlife.com/" target="_blank" rel="noopener" class="case-link reveal reveal-d4">
+          View Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- 04 Parashoot -->
+    <div class="case-study" data-cat="web">
+      <div class="case-img-wrap">
+        <img src="assets/para.avif" alt="Parashoot Studio" class="case-img clip-reveal visible" />
+        <div class="case-view-overlay">
+          <a href="https://parashootstudio.com" target="_blank" rel="noopener" class="case-view-btn">
+            Visit <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.5rem;margin-left:0.2rem;"></i>
+          </a>
+        </div>
+      </div>
+      <div class="case-info">
+        <div class="case-num reveal">04 — Project</div>
+        <h2 class="case-title reveal reveal-d1">Parashoot Studio</h2>
+        <div class="case-cat reveal reveal-d2">Web Development</div>
+        <p class="case-desc reveal reveal-d2">
+          A creative content clan site developed for Flashlab Creative's visual storytelling division — minimal, editorial, and bold.
+        </p>
+        <div class="case-meta reveal reveal-d3">
+          <div class="case-meta-item">
+            <span class="case-meta-label">Category</span>
+            <span class="case-meta-val">Web Dev</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Year</span>
+            <span class="case-meta-val">2024</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Type</span>
+            <span class="case-meta-val">Creative Studio</span>
+          </div>
+        </div>
+        <a href="https://parashootstudio.com" target="_blank" rel="noopener" class="case-link reveal reveal-d4">
+          View Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- 05 Travel Stop -->
+    <div class="case-study" data-cat="uiux">
+      <div class="case-img-wrap">
+        <img src="assets/stop.jpeg" alt="Travel Stop Goa" class="case-img clip-reveal visible" />
+        <div class="case-view-overlay">
+          <a href="https://travelstopgoa.com/" target="_blank" rel="noopener" class="case-view-btn">
+            Visit <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.5rem;margin-left:0.2rem;"></i>
+          </a>
+        </div>
+      </div>
+      <div class="case-info">
+        <div class="case-num reveal">05 — Project</div>
+        <h2 class="case-title reveal reveal-d1">Travel Stop Goa</h2>
+        <div class="case-cat reveal reveal-d2">Web Dev &amp; UI/UX Design</div>
+        <p class="case-desc reveal reveal-d2">
+          A comprehensive travel company website combining compelling visuals,
+          intuitive UX, and seamless booking flows.
+        </p>
+        <div class="case-meta reveal reveal-d3">
+          <div class="case-meta-item">
+            <span class="case-meta-label">Category</span>
+            <span class="case-meta-val">Web + UI/UX</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Year</span>
+            <span class="case-meta-val">2023</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Type</span>
+            <span class="case-meta-val">Travel &amp; Tourism</span>
+          </div>
+        </div>
+        <a href="https://travelstopgoa.com/" target="_blank" rel="noopener" class="case-link reveal reveal-d4">
+          View Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- 06 Reginaldo Trust -->
+    <div class="case-study" data-cat="uiux">
+      <div class="case-img-wrap">
+        <img src="assets/rtrust.jpeg" alt="Reginaldo Trust" class="case-img clip-reveal visible" />
+        <div class="case-view-overlay">
+          <a href="https://reginaldotrust.org/" target="_blank" rel="noopener" class="case-view-btn">
+            Visit <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.5rem;margin-left:0.2rem;"></i>
+          </a>
+        </div>
+      </div>
+      <div class="case-info">
+        <div class="case-num reveal">06 — Project</div>
+        <h2 class="case-title reveal reveal-d1">Reginaldo Trust</h2>
+        <div class="case-cat reveal reveal-d2">Web Dev &amp; UI/UX Design</div>
+        <p class="case-desc reveal reveal-d2">
+          A dignified, accessible web presence for a trust organisation — balancing
+          warmth, credibility, and clarity of information.
+        </p>
+        <div class="case-meta reveal reveal-d3">
+          <div class="case-meta-item">
+            <span class="case-meta-label">Category</span>
+            <span class="case-meta-val">Web + UI/UX</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Year</span>
+            <span class="case-meta-val">2023</span>
+          </div>
+          <div class="case-meta-item">
+            <span class="case-meta-label">Type</span>
+            <span class="case-meta-val">NGO / Trust</span>
+          </div>
+        </div>
+        <a href="https://reginaldotrust.org/" target="_blank" rel="noopener" class="case-link reveal reveal-d4">
+          View Live Site <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /portfolio-cases -->
 
   <!-- CTA STRIP -->
   <div class="portfolio-cta-strip">
-    <p>Have a project in mind? Let's build something great together.</p>
+    <p>Have a project in mind?<br /><em>Let's build something great.</em></p>
     <a href="connect.html" class="btn btn-primary">Start a Project <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 
@@ -174,12 +327,9 @@
       </div>
       <div class="footer-links">
         <h4>Quick Links</h4>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="why-us.html">Why Us</a>
-        <a href="careers.html">Careers</a>
+        <a href="index.html">Home</a><a href="about.html">About</a>
+        <a href="services.html">Services</a><a href="portfolio.html">Portfolio</a>
+        <a href="why-us.html">Why Us</a><a href="careers.html">Careers</a>
         <a href="connect.html">Connect</a>
       </div>
       <div class="footer-links">
@@ -193,9 +343,9 @@
       </div>
       <div class="footer-contact">
         <h4>Contact Us</h4>
-        <p><a href="mailto:connect@cybercreative.in"><i class="fa-solid fa-envelope yellow-text"></i> connect@cybercreative.in</a></p>
-        <p><a href="tel:+919922424405"><i class="fa-solid fa-phone yellow-text"></i> +91 9922424405</a></p>
-        <p><a href="https://www.google.com/maps?q=G26+Vikrant+Complex,+Malbhat,+Margao,+Goa+403601" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-location-dot yellow-text"></i> G26-Vikrant Complex, Malbhat, Margao, Goa 403601</a></p>
+        <p><a href="mailto:connect@cybercreative.in"><i class="fa-solid fa-envelope"></i> connect@cybercreative.in</a></p>
+        <p><a href="tel:+919922424405"><i class="fa-solid fa-phone"></i> +91 9922424405</a></p>
+        <p><a href="https://www.google.com/maps?q=G26+Vikrant+Complex,+Malbhat,+Margao,+Goa+403601" target="_blank"><i class="fa-solid fa-location-dot"></i> G26-Vikrant Complex, Malbhat, Margao, Goa 403601</a></p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -207,6 +357,6 @@
     <i class="fa-solid fa-chevron-up"></i>
   </button>
   <div class="mobile-overlay" id="mobileOverlay"></div>
-  <script src="script.js"></script>
+  <script src="script/script.js"></script>
 </body>
 </html>
