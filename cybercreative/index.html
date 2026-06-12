@@ -171,7 +171,10 @@
       <!-- Left: image -->
       <div class="story-left reveal-left">
         <div class="story-img-wrap">
-          <img src="assets/img2.jpeg" alt="Cyber Creative Team" class="story-img clip-reveal visible" />
+          <picture>
+          <source srcset="assets/img2.webp" type="image/webp" />
+          <img src="assets/img2.jpeg" alt="Cyber Creative Team" class="story-img clip-reveal visible" width="577" height="800" loading="lazy" decoding="async" />
+        </picture>
           <div class="story-img-caption">
             <span>Since 2022 · Goa, India</span>
           </div>
@@ -315,7 +318,10 @@
       <!-- Cell 2 -->
       <div class="collage-cell border-trace-card reveal-scale reveal-d1">
         <span class="collage-idx">02</span>
-        <img src="assets/rick.jpeg" alt="Club Ricky's" class="collage-img" />
+        <picture>
+          <source srcset="assets/rick.webp" type="image/webp" />
+          <img src="assets/rick.jpeg" alt="Club Ricky's" class="collage-img" width="800" height="800" loading="lazy" decoding="async" />
+        </picture>
         <div class="collage-overlay">
           <div class="collage-cat">Web Development</div>
           <div class="collage-name">Club Ricky's</div>
@@ -327,7 +333,10 @@
       <!-- Cell 3 -->
       <div class="collage-cell border-trace-card reveal-scale reveal-d2">
         <span class="collage-idx">03</span>
-        <img src="assets/str.jpeg" alt="Strobe Nightlife" class="collage-img" />
+        <picture>
+          <source srcset="assets/str.webp" type="image/webp" />
+          <img src="assets/str.jpeg" alt="Strobe Nightlife" class="collage-img" width="640" height="800" loading="lazy" decoding="async" />
+        </picture>
         <div class="collage-overlay">
           <div class="collage-cat">Web Development</div>
           <div class="collage-name">Strobe Nightlife</div>
@@ -351,7 +360,10 @@
       <!-- Cell 5 -->
       <div class="collage-cell border-trace-card reveal-scale reveal-d1">
         <span class="collage-idx">05</span>
-        <img src="assets/stop.jpeg" alt="Travel Stop Goa" class="collage-img" />
+        <picture>
+          <source srcset="assets/stop.webp" type="image/webp" />
+          <img src="assets/stop.jpeg" alt="Travel Stop Goa" class="collage-img" width="800" height="800" loading="lazy" decoding="async" />
+        </picture>
         <div class="collage-overlay">
           <div class="collage-cat">Web Dev &amp; UI/UX</div>
           <div class="collage-name">Travel Stop Goa</div>
@@ -363,7 +375,10 @@
       <!-- Cell 6 -->
       <div class="collage-cell border-trace-card reveal-scale reveal-d1">
         <span class="collage-idx">05</span>
-        <img src="assets/rtrust.jpeg" alt="Reginaldo Trust" class="collage-img" />
+        <picture>
+          <source srcset="assets/rtrust.webp" type="image/webp" />
+          <img src="assets/rtrust.jpeg" alt="Reginaldo Trust" class="collage-img" width="800" height="800" loading="lazy" decoding="async" />
+        </picture>
         <div class="collage-overlay">
           <div class="collage-cat">Web Dev &amp; UI/UX</div>
           <div class="collage-name">Reginaldo Trust</div>
@@ -486,6 +501,6 @@
   </button>
   <div class="mobile-overlay" id="mobileOverlay"></div>
 
-  <script src="script/script.js"></script>
+  <script src="script/script.js" defer></script>
 </body>
 </html>
