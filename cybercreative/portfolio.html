@@ -17,6 +17,96 @@
       z-index: 9999;
       transition: width 0.1s linear;
     }
+
+    /* ── Portfolio UI enhancements ── */
+    .portfolio-filter-bar {
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .pf-filters { display: flex; gap: 0; }
+    .pf-count {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dim);
+      padding: 1rem 0;
+      white-space: nowrap;
+    }
+    .pf-count strong { color: var(--gold); font-weight: 700; }
+
+    /* Tech / category chips inside case-meta */
+    .case-stack {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 0.4rem;
+    }
+    .case-chip {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--light);
+      border: 1px solid var(--mid);
+      border-radius: 999px;
+      padding: 0.28rem 0.7rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .case-study:hover .case-chip {
+      border-color: rgba(255, 208, 23, 0.35);
+      color: var(--ivory);
+    }
+
+    /* Project index number overlay on image */
+    .case-index {
+      position: absolute; bottom: 1.25rem; right: 1.5rem;
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1;
+      color: rgba(250,250,250,0.08);
+      letter-spacing: 0.02em;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Enhanced CTA strip */
+    .portfolio-cta-strip {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+    .portfolio-cta-strip-row {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; flex-wrap: wrap; gap: 2rem;
+    }
+    .portfolio-cta-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn-secondary-ghost {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--light);
+      border: 1px solid var(--mid);
+      border-radius: 999px;
+      padding: 0.95rem 1.8rem;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .btn-secondary-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(255,208,23,0.06);
+    }
+
+    @media (max-width: 480px) {
+      .portfolio-filter-bar { gap: 0.5rem; }
+      .pf-count { width: 100%; order: 2; padding: 0.5rem 4vw 1rem; }
+      .pf-filters { order: 1; }
+      .case-index { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -72,9 +162,12 @@
   ══════════════════════════════════════════ -->
   <!-- FILTER BAR -->
   <div class="portfolio-filter-bar">
-    <button class="pf-btn active" data-filter="all">All</button>
-    <button class="pf-btn" data-filter="web">Web Dev</button>
-    <button class="pf-btn" data-filter="uiux">UI/UX Design</button>
+    <div class="pf-filters">
+      <button class="pf-btn active" data-filter="all">All</button>
+      <button class="pf-btn" data-filter="web">Web Dev</button>
+      <button class="pf-btn" data-filter="uiux">UI/UX Design</button>
+    </div>
+    <div class="pf-count"><strong id="pfCount">6</strong> Projects Shown</div>
   </div>
 
   <div class="portfolio-cases" id="portfolioCases">
@@ -82,7 +175,8 @@
     <!-- 01 Flashlab -->
     <div class="case-study" data-cat="web">
       <div class="case-img-wrap">
-        <img src="assets/flash.avif" alt="Flashlab Creative" class="case-img clip-reveal visible" />
+        <img src="assets/flash.avif" alt="Flashlab Creative" class="case-img clip-reveal visible" loading="lazy" decoding="async" />
+        <div class="case-index">01</div>
         <div class="case-view-overlay">
           <a href="https://flashlabcreative.com" target="_blank" rel="noopener" class="case-view-btn">
             Visit <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.5rem;margin-left:0.2rem;"></i>
@@ -108,7 +202,11 @@
           </div>
           <div class="case-meta-item">
             <span class="case-meta-label">Stack</span>
-            <span class="case-meta-val">HTML · CSS · JS</span>
+            <div class="case-stack">
+              <span class="case-chip">HTML</span>
+              <span class="case-chip">CSS</span>
+              <span class="case-chip">JS</span>
+            </div>
           </div>
         </div>
         <a href="https://flashlabcreative.com" target="_blank" rel="noopener" class="case-link reveal reveal-d4">
@@ -120,7 +218,8 @@
     <!-- 02 Club Ricky's -->
     <div class="case-study" data-cat="web">
       <div class="case-img-wrap">
-        <img src="assets/rick.jpeg" alt="Club Ricky's" class="case-img clip-reveal visible" />
+        <img src="assets/rick.jpeg" alt="Club Ricky's" class="case-img clip-reveal visible" width="800" height="800" loading="lazy" decoding="async" />
+        <div class="case-index">02</div>
         <div class="case-view-overlay">
           <a href="https://clubrickysgoa.com/" target="_blank" rel="noopener" class="case-view-btn">
             Visit <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.5rem;margin-left:0.2rem;"></i>
@@ -157,7 +256,8 @@
     <!-- 03 Strobe -->
     <div class="case-study" data-cat="web">
       <div class="case-img-wrap">
-        <img src="assets/str.jpeg" alt="Strobe Nightlife" class="case-img clip-reveal visible" />
+        <img src="assets/str.jpeg" alt="Strobe Nightlife" class="case-img clip-reveal visible" width="640" height="800" loading="lazy" decoding="async" />
+        <div class="case-index">03</div>
         <div class="case-view-overlay">
           <a href="https://www.strobenightlife.com/" target="_blank" rel="noopener" class="case-view-btn">
             Visit <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.5rem;margin-left:0.2rem;"></i>
@@ -194,7 +294,8 @@
     <!-- 04 Parashoot -->
     <div class="case-study" data-cat="web">
       <div class="case-img-wrap">
-        <img src="assets/para.avif" alt="Parashoot Studio" class="case-img clip-reveal visible" />
+        <img src="assets/para.avif" alt="Parashoot Studio" class="case-img clip-reveal visible" loading="lazy" decoding="async" />
+        <div class="case-index">04</div>
         <div class="case-view-overlay">
           <a href="https://parashootstudio.com" target="_blank" rel="noopener" class="case-view-btn">
             Visit <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.5rem;margin-left:0.2rem;"></i>
@@ -231,7 +332,8 @@
     <!-- 05 Travel Stop -->
     <div class="case-study" data-cat="uiux">
       <div class="case-img-wrap">
-        <img src="assets/stop.jpeg" alt="Travel Stop Goa" class="case-img clip-reveal visible" />
+        <img src="assets/stop.jpeg" alt="Travel Stop Goa" class="case-img clip-reveal visible" width="800" height="800" loading="lazy" decoding="async" />
+        <div class="case-index">05</div>
         <div class="case-view-overlay">
           <a href="https://travelstopgoa.com/" target="_blank" rel="noopener" class="case-view-btn">
             Visit <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.5rem;margin-left:0.2rem;"></i>
@@ -269,7 +371,8 @@
     <!-- 06 Reginaldo Trust -->
     <div class="case-study" data-cat="uiux">
       <div class="case-img-wrap">
-        <img src="assets/rtrust.jpeg" alt="Reginaldo Trust" class="case-img clip-reveal visible" />
+        <img src="assets/rtrust.jpeg" alt="Reginaldo Trust" class="case-img clip-reveal visible" width="800" height="800" loading="lazy" decoding="async" />
+        <div class="case-index">06</div>
         <div class="case-view-overlay">
           <a href="https://reginaldotrust.org/" target="_blank" rel="noopener" class="case-view-btn">
             Visit <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.5rem;margin-left:0.2rem;"></i>
@@ -308,8 +411,13 @@
 
   <!-- CTA STRIP -->
   <div class="portfolio-cta-strip">
-    <p>Have a project in mind?<br /><em>Let's build something great.</em></p>
-    <a href="connect.html" class="btn btn-primary">Start a Project <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="portfolio-cta-strip-row">
+      <p>Have a project in mind?<br /><em>Let's build something great.</em></p>
+      <div class="portfolio-cta-actions">
+        <a href="connect.html" class="btn btn-primary">Start a Project <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="services.html" class="btn-secondary-ghost">Explore Services <i class="fa-solid fa-layer-group"></i></a>
+      </div>
+    </div>
   </div>
 
   <!-- FOOTER -->
@@ -356,6 +464,25 @@
     <i class="fa-solid fa-chevron-up"></i>
   </button>
   <div class="mobile-overlay" id="mobileOverlay"></div>
-  <script src="script/script.js"></script>
+  <script src="script/script.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      const pfBtns = document.querySelectorAll('.pf-btn');
+      const cases  = document.querySelectorAll('#portfolioCases .case-study');
+      const countEl = document.getElementById('pfCount');
+      if (!pfBtns.length || !countEl) return;
+      pfBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.dataset.filter;
+          let n = 0;
+          cases.forEach(c => {
+            const cat = c.dataset.cat || 'web';
+            if (filter === 'all' || cat === filter) n++;
+          });
+          countEl.textContent = n;
+        });
+      });
+    });
+  </script>
 </body>
 </html>
