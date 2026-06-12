@@ -1,0 +1,467 @@
+    :root {
+      --gold: #D6A852;
+      --gold-dim: rgba(214, 168, 82, 0.12);
+      --dark: #0a0a0a;
+      --charcoal: #111111;
+      --mid: rgba(255, 255, 255, 0.08);
+      --muted: rgba(255, 255, 255, 0.42);
+    }
+
+    #scrollProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: var(--gold);
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* ─── CAREERS SECTION ─── */
+    .careers-section {
+      background: var(--dark);
+      padding: 7rem 4vw 6rem;
+    }
+
+    .careers-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Intro row: stat counters + intro text side by side */
+    .careers-intro-row {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: center;
+      padding-bottom: 5rem;
+      border-bottom: 1px solid var(--mid);
+      margin-bottom: 4rem;
+    }
+
+    @media (max-width: 820px) {
+      .careers-intro-row {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding-bottom: 3rem;
+        margin-bottom: 3rem;
+      }
+    }
+
+    /* Stats */
+    .careers-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--mid);
+    }
+
+    .stat-item:first-child {
+      border-top: 1px solid var(--mid);
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.2rem;
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+
+    .stat-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Intro text */
+    .careers-intro-text {}
+
+    .careers-intro-text .section-label {
+      margin-bottom: 1.25rem;
+    }
+
+    .careers-intro-text h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 1.25rem;
+    }
+
+    .careers-intro-text p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      max-width: 480px;
+    }
+
+    .careers-location-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(214, 168, 82, 0.3);
+      padding: 0.4rem 0.85rem;
+    }
+
+    /* Section header above grid */
+    .careers-grid-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      gap: 1rem;
+    }
+
+    .careers-grid-header h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+
+    .careers-count {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── Career Cards ── */
+    .careers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--mid);
+    }
+
+    @media (max-width: 900px) {
+      .careers-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 540px) {
+      .careers-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .career-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: var(--dark);
+      padding: 2rem 1.75rem 1.75rem;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s ease;
+    }
+
+    .career-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+
+    .career-card:hover {
+      background: #111;
+    }
+
+    .career-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .career-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .career-card-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid rgba(214, 168, 82, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 0.95rem;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .career-card:hover .career-card-icon {
+      background: var(--gold-dim);
+      border-color: var(--gold);
+    }
+
+    .career-badge {
+      font-size: 0.6rem;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.6rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .career-badge--part {
+      border-color: rgba(255, 255, 255, 0.25);
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .career-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      transition: color 0.25s;
+    }
+
+    .career-card:hover .career-card-title {
+      color: var(--gold);
+    }
+
+    .career-card-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin: 0;
+      flex: 1;
+    }
+
+    .career-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .career-tags span {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.05em;
+      padding: 0.18rem 0.5rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.45);
+      text-transform: uppercase;
+    }
+
+    .career-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--mid);
+    }
+
+    .career-card-footer-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: gap 0.25s;
+    }
+
+    .career-card:hover .career-card-footer-text {
+      gap: 0.7rem;
+    }
+
+    .career-card-footer-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.1);
+      line-height: 1;
+    }
+
+    /* ── CTA ROW ── */
+    .careers-cta-row {
+      margin-top: 1px;
+      background: var(--mid);
+      padding: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .careers-cta-row {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    .careers-cta-row p {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin: 0;
+    }
+
+    .careers-cta-row p span {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-top: 0.25rem;
+    }
+
+    /* ── VALUES SECTION ── */
+    .values-section {
+      padding: 8rem 4vw;
+      background: var(--charcoal);
+      border-top: 1px solid var(--mid);
+    }
+
+    .values-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .values-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+
+    @media (max-width: 720px) {
+      .values-header {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .values-header p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--mid);
+    }
+
+    @media (max-width: 720px) {
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .value-card {
+      background: var(--charcoal);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .value-card:hover {
+      background: #161616;
+    }
+
+    .value-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .value-card-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: rgba(214, 168, 82, 0.08);
+      line-height: 1;
+      margin-bottom: 1.25rem;
+      transition: color 0.3s;
+    }
+
+    .value-card:hover .value-card-num {
+      color: rgba(214, 168, 82, 0.15);
+    }
+
+    .wc-icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      border: 1px solid rgba(214, 168, 82, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+      transition: background 0.3s;
+    }
+
+    .value-card:hover .wc-icon {
+      background: var(--gold-dim);
+    }
+
+    .wc-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.65rem;
+    }
+
+    .wc-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0;
+    }
+  

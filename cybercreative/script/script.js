@@ -8,11 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const pt = document.getElementById('page-transition');
   // Fade in
   document.body.style.opacity = '0';
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.body.style.transition = 'opacity 0.5s ease';
-      document.body.style.opacity = '1';
-    }, 80);
+  document.body.style.transition = 'opacity 0.25s ease';
+  requestAnimationFrame(() => {
+    document.body.style.opacity = '1';
   });
   // Intercept internal links
   document.querySelectorAll('a[href]').forEach(link => {
@@ -23,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       if (pt) { pt.classList.add('out'); }
       else { document.body.style.opacity = '0'; }
-      setTimeout(() => { window.location.href = href; }, 400);
+      setTimeout(() => { window.location.href = href; }, 150);
     });
   });
 
@@ -48,8 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
           preloader.classList.add('hidden');
           document.body.style.overflow = '';
           triggerCounters();
-        }, 2000);
+        }, 400);
       });
+      // Failsafe: never block longer than 2.5s even if a resource hangs
+      setTimeout(() => {
+        preloader.classList.add('hidden');
+        document.body.style.overflow = '';
+        triggerCounters();
+      }, 2500);
     } else {
       preloader.classList.add('hidden');
       triggerCounters();

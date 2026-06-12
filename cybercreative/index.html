@@ -6,53 +6,11 @@
   <title>Cyber Creative — Digital Experiences</title>
   <link rel="stylesheet" href="Style/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://cybercreative.in" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    /* ── Hero parallax layers ── */
-    .hero-parallax-orb  { will-change: transform; }
-    .hero-parallax-text { will-change: transform; }
-
-    /* ── Scroll-zoom hero title ── */
-    #heroZoomTitle {
-      will-change: transform, opacity;
-      transform-origin: center center;
-    }
-
-    /* ── Floating badges removed; replaced with clean layout ── */
-
-    /* ── Mouse follow image (cursor-follow) ── */
-    .cursor-follow-img {
-      position: fixed;
-      width: 240px;
-      aspect-ratio: 4/3;
-      pointer-events: none;
-      z-index: 200;
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.88);
-      transition: opacity 0.35s, transform 0.35s;
-      overflow: hidden;
-      border: 1px solid rgba(232,200,74,0.3);
-    }
-    .cursor-follow-img.visible {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-    .cursor-follow-img img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* ── Magnetic button ── */
-    .magnetic { display: inline-block; transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
-
-    /* ── Scroll progress bar ── */
-    #scrollProgress {
-      position: fixed; top: 0; left: 0;
-      height: 2px; width: 0;
-      background: var(--gold);
-      z-index: 9999;
-      transition: width 0.1s linear;
-    }
-  </style>
+  <link rel="stylesheet" href="Style/index.css" />
 </head>
 <body>
   <div id="page-transition"></div>

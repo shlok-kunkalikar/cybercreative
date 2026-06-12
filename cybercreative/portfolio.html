@@ -6,108 +6,11 @@
   <title>Cyber Creative — Portfolio</title>
   <link rel="stylesheet" href="Style/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://cybercreative.in" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    #scrollProgress {
-      position: fixed; top: 0; left: 0;
-      height: 2px; width: 0;
-      background: var(--gold);
-      z-index: 9999;
-      transition: width 0.1s linear;
-    }
-
-    /* ── Portfolio UI enhancements ── */
-    .portfolio-filter-bar {
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .pf-filters { display: flex; gap: 0; }
-    .pf-count {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--dim);
-      padding: 1rem 0;
-      white-space: nowrap;
-    }
-    .pf-count strong { color: var(--gold); font-weight: 700; }
-
-    /* Tech / category chips inside case-meta */
-    .case-stack {
-      display: flex; flex-wrap: wrap; gap: 0.5rem;
-      margin-top: 0.4rem;
-    }
-    .case-chip {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--light);
-      border: 1px solid var(--mid);
-      border-radius: 999px;
-      padding: 0.28rem 0.7rem;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .case-study:hover .case-chip {
-      border-color: rgba(255, 208, 23, 0.35);
-      color: var(--ivory);
-    }
-
-    /* Project index number overlay on image */
-    .case-index {
-      position: absolute; bottom: 1.25rem; right: 1.5rem;
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      line-height: 1;
-      color: rgba(250,250,250,0.08);
-      letter-spacing: 0.02em;
-      z-index: 1;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    /* Enhanced CTA strip */
-    .portfolio-cta-strip {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.5rem;
-    }
-    .portfolio-cta-strip-row {
-      display: flex; align-items: center; justify-content: space-between;
-      width: 100%; flex-wrap: wrap; gap: 2rem;
-    }
-    .portfolio-cta-actions {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-    }
-    .btn-secondary-ghost {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--light);
-      border: 1px solid var(--mid);
-      border-radius: 999px;
-      padding: 0.95rem 1.8rem;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-    }
-    .btn-secondary-ghost:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      background: rgba(255,208,23,0.06);
-    }
-
-    @media (max-width: 480px) {
-      .portfolio-filter-bar { gap: 0.5rem; }
-      .pf-count { width: 100%; order: 2; padding: 0.5rem 4vw 1rem; }
-      .pf-filters { order: 1; }
-      .case-index { display: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="Style/portfolio.css" />
 </head>
 <body>
   <div id="page-transition"></div>
