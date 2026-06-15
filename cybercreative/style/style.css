@@ -262,6 +262,30 @@ body.cursor-view  .cursor-outline {
   transform: translateY(-2px);
 }
 
+/* Footer CTA Button */
+.footer-cta {
+  color: var(--gold) !important;
+  border: 1px solid var(--gold);
+  padding: 0.45rem 1.1rem;
+  border-radius: 2px;
+  font-size: 0.65rem;
+  transition: background 0.2s, color 0.2s !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.footer-cta:hover { 
+  background: var(--gold); 
+  color: var(--black) !important; 
+  transform: translateY(-1px);
+}
+.footer-cta::after { display: none !important; }
+
 /* ═══════════════════════════════════════════════
    TICKER / MARQUEE
 ═══════════════════════════════════════════════ */
@@ -949,35 +973,35 @@ body.cursor-view  .cursor-outline {
 .footer {
   background: var(--black);
   border-top: 1px solid var(--mid);
-  padding: 6rem 4vw 2rem;
+  padding: 5rem 5vw 2rem;
 }
 .footer-grid {
-  max-width: 1200px; margin: 0 auto;
+  max-width: 1400px; margin: 0 auto;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.4fr;
-  gap: 4rem;
+  grid-template-columns: 1.4fr 0.9fr 1.1fr 0.9fr 0.9fr 1.4fr;
+  gap: 1.8rem;
   padding-bottom: 4rem;
   border-bottom: 1px solid var(--mid);
 }
 .footer-logo {
-  width: 44px;
+  width: 40px;
   filter: brightness(0) invert(1);
-  margin-bottom: 1rem;
+  margin-bottom: 0.9rem;
 }
 .footer-brand p {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--dim);
-  line-height: 1.7;
-  max-width: 280px;
-  margin-bottom: 1.5rem;
+  line-height: 1.65;
+  max-width: 220px;
+  margin-bottom: 1.2rem;
 }
-.footer-socials { display: flex; gap: 1rem; }
+.footer-socials { display: flex; gap: 0.7rem; }
 .footer-socials a {
-  width: 36px; height: 36px;
+  width: 32px; height: 32px;
   border: 1px solid var(--mid);
   border-radius: 2px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   color: var(--muted);
   transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
@@ -988,31 +1012,31 @@ body.cursor-view  .cursor-outline {
 }
 .footer-links h4, .footer-contact h4 {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.18em;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.2rem;
 }
 .footer-links a {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--dim);
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.55rem;
   transition: color 0.2s;
 }
 .footer-links a:hover { color: var(--ivory); }
 .footer-contact p {
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   color: var(--dim);
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.75rem;
   line-height: 1.5;
 }
 .footer-contact a { color: var(--dim); transition: color 0.2s; }
 .footer-contact a:hover { color: var(--ivory); }
 .footer-contact i { color: var(--gold); margin-right: 0.4rem; }
 .footer-bottom {
-  max-width: 1200px; margin: 2rem auto 0;
+  max-width: 1400px; margin: 2rem auto 0;
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: 1rem;
 }
@@ -1023,12 +1047,19 @@ body.cursor-view  .cursor-outline {
 }
 .footer-bottom a { color: var(--gold); }
 
+@media (max-width: 1100px) {
+  .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 2.5rem; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-contact { grid-column: 1 / -1; }
+}
 @media (max-width: 860px) {
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
   .footer-brand { grid-column: 1 / -1; }
+  .footer-contact { grid-column: 1 / -1; }
 }
 @media (max-width: 480px) {
   .footer-grid { grid-template-columns: 1fr; }
+  .footer-contact { grid-column: auto; }
 }
 
 /* ═══════════════════════════════════════════════
