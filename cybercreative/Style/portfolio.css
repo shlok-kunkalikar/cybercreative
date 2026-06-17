@@ -96,3 +96,13 @@
       .case-index { display: none; }
     }
   
+
+/* ── v8 portfolio enhancements ── */
+:root { --gold: #E8C84A; }
+
+.case-study {
+  transition: opacity 0.4s, transform 0.4s, box-shadow 0.4s;
+}
+.case-study:hover {
+  box-shadow: 0 8px 40px rgba(232,200,74,0.08);
+}

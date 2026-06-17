@@ -1,5 +1,5 @@
     :root {
-      --gold: #D6A852;
+      --gold: #E8C84A;
       --gold-dim: rgba(214, 168, 82, 0.12);
       --dark: #0a0a0a;
       --mid: rgba(255, 255, 255, 0.08);
@@ -527,3 +527,28 @@
       filter: grayscale(100%) invert(88%) contrast(88%);
     }
   
+
+/* ── v8 connect enhancements ── */
+:root {
+  --gold: #E8C84A;
+  --gold-dim: rgba(232, 200, 74, 0.14);
+}
+
+.ci-item {
+  transition: color 0.25s, padding-left 0.25s, background 0.25s;
+  border-radius: 4px;
+}
+.ci-item:hover {
+  padding-left: 6px;
+  background: rgba(232,200,74,0.03);
+}
+
+.ci-icon {
+  border-color: rgba(232,200,74,0.35) !important;
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.ci-item:hover .ci-icon {
+  background: rgba(232,200,74,0.1);
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 12px rgba(232,200,74,0.2);
+}

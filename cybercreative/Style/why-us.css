@@ -1,2 +1,4 @@
     #scrollProgress { position:fixed;top:0;left:0;height:2px;width:0;background:var(--gold);z-index:9999;transition:width 0.1s linear; }
   
+/* v8 */
+#scrollProgress { background: linear-gradient(to right, #c9a828, #E8C84A, #fff0a0); box-shadow: 0 0 8px rgba(232,200,74,0.5); }

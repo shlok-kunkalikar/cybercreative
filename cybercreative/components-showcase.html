@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UI Components Showcase — Cyber Creative Improvements</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="Style/style-improved.css" />
+  <style>
+    /* Example-specific styles */
+    .showcase-section {
+      padding: var(--spacing-xl) 0;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    }
+    
+    .showcase-section:last-child {
+      border-bottom: none;
+    }
+    
+    .showcase-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+    
+    .showcase-title {
+      font-size: 2.5rem;
+      margin-bottom: var(--spacing-md);
+      color: var(--white);
+      border-bottom: 3px solid var(--gold);
+      padding-bottom: var(--spacing-md);
+    }
+    
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .showcase-item {
+      background: rgba(29, 29, 29, 0.5);
+      border: 1px solid rgba(255, 215, 0, 0.1);
+      padding: var(--spacing-lg);
+      border-radius: 12px;
+      text-align: center;
+    }
+    
+    .showcase-item h3 {
+      margin-bottom: var(--spacing-sm);
+      color: var(--gold);
+    }
+    
+    .color-swatch {
+      width: 100%;
+      height: 120px;
+      border-radius: 8px;
+      margin-bottom: var(--spacing-sm);
+      border: 2px solid rgba(255, 215, 0, 0.2);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: var(--spacing-sm);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--ivory);
+    }
+    
+    .btn-demo {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      align-items: center;
+    }
+    
+    .form-demo {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    
+    .typography-demo h1,
+    .typography-demo h2,
+    .typography-demo h3 {
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .animation-demo {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dim));
+      border-radius: 8px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-smooth);
+    }
+    
+    .animation-demo:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 32px rgba(255, 215, 0, 0.3);
+    }
+    
+    .code-block {
+      background: var(--dark);
+      border: 1px solid var(--dim);
+      border-radius: 8px;
+      padding: var(--spacing-md);
+      margin: var(--spacing-md) 0;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #4ade80;
+    }
+    
+    .code-keyword { color: #0099ff; }
+    .code-string { color: #00d9d9; }
+    .code-attr { color: var(--gold); }
+    
+    .hero-section-demo {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(0, 153, 255, 0.05));
+      padding: var(--spacing-2xl) var(--spacing-md);
+      border-radius: 16px;
+      text-align: center;
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .hero-section-demo h1 {
+      margin-bottom: var(--spacing-md);
+      background: linear-gradient(135deg, var(--gold), var(--ivory));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .footer-demo {
+      background: var(--dark);
+      border-top: 1px solid rgba(255, 215, 0, 0.1);
+      padding: var(--spacing-xl) 0;
+      margin-top: var(--spacing-2xl);
+    }
+    
+    .footer-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .footer-links a {
+      display: block;
+      color: var(--ivory);
+      transition: color 0.3s var(--ease-smooth);
+    }
+    
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+    
+    @media (max-width: 768px) {
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .showcase-section {
+        padding: var(--spacing-lg) 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header style="background: rgba(29, 29, 29, 0.8); backdrop-filter: blur(10px); padding: var(--spacing-md) 0; border-bottom: 1px solid rgba(255, 215, 0, 0.1); position: sticky; top: 0; z-index: 100;">
+    <div class="showcase-container">
+      <h1 style="font-size: 1.5rem; margin: 0;">
+        <span style="color: var(--gold);">✦</span> 
+        UI Components Showcase
+      </h1>
+      <p style="color: var(--muted); margin: 0.5rem 0 0 0;">Cyber Creative — Improved Design System v2.0</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main style="background: var(--black);">
+    <!-- Hero Demo Section -->
+    <section class="showcase-section">
+      <div class="showcase-container">
+        <div class="hero-section-demo">
+          <h1>Modern UI Design System</h1>
+          <p style="font-size: 1.1rem; color: var(--light); margin-bottom: var(--spacing-md);">
+            Premium components built with accessibility and performance in mind
+          </p>
+          <div style="display: flex; gap: var(--spacing-sm); justify-content: center; flex-wrap: wrap;">
+            <a href="#" class="btn btn-primary">Get Started</a>
+            <a href="#" class="btn btn-outline">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Colors Section -->
+    <section class="showcase-section">
+      <div class="showcase-container">
+        <h2 class="showcase-title">Color Palette</h2>
+        <div class="showcase-grid">
+          <div class="showcase-item">
+            <h3>Primary Gold</h3>
+            <div class="color-swatch" style="background: var(--gold); color: var(--black);">#ffd700</div>
+            <p style="color: var(--muted); font-size: 0.9rem;">Primary accent for CTAs and highlights</p>
+          </div>
+          <div class="showcase-item">
+            <h3>Accent Blue</h3>
+            <div class="color-swatch" style="background: var(--accent-blue);">#0099ff</div>
+            <p style="color: var(--muted); font-size: 0.9rem;">Secondary accent for depth</p>
+          </div>
+          <div class="showcase-item">
+            <h3>Accent Teal</h3>
+            <div class="color-swatch" style="background: var(--accent-teal);">#00d9d9</div>
+            <p style="color: var(--muted); font-size: 0.9rem;">Tertiary accent for visual interest</p>
+          </div>
+          <div class="showcase-item">
+            <h3>Background</h3>
+            <div class="color-swatch" style="background: var(--charcoal);">#1e1e1e</div>
+            <p style="color: var(--muted); font-size: 0.9rem;">Card and element backgrounds</p>
+          </div>
+          <div class="showcase-item">
+            <h3>Text Primary</h3>
+            <div class="color-swatch" style="background: var(--ivory);">#f5f2ed</div>
+            <p style="color: var(--muted); font-size: 0.9rem;">Main text color for readability</p>
+          </div>
+          <div class="showcase-item">
+            <h3>Text Muted</h3>
+            <div class="color-swatch" style="background: var(--muted);">#888888</div>
+            <p style="color: var(--light); font-size: 0.9rem;">Secondary text and hints</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons Section -->
+    <section class="showcase-section">
+      <div class="showcase-container">
+        <h2 class="showcase-title">Button Components</h2>
+        <div class="showcase-grid">
+          <div class="showcase-item">
+            <h3>Primary Button</h3>
+            <div class="btn-demo">
+              <a href="#" class="btn btn-primary">Primary Action</a>
+              <a href="#" class="btn btn-primary">
+                With Icon <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="showcase-item">
+            <h3>Outline Button</h3>
+            <div class="btn-demo">
+              <a href="#" class="btn btn-outline">Secondary Action</a>
+              <a href="#" class="btn btn-outline">
+                Learn More <i class="fa-solid fa-external-link"></i>
+              </a>
+            </div>
+          </div>
+          <div class="showcase-item">
+            <h3>Secondary Button</h3>
+            <div class="btn-demo">
+              <button class="btn btn-secondary">Submit</button>
+              <button class="btn btn-secondary">Cancel</button>
+            </div>
+          </div>
+        </div>
+        
+        <h3 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md); color: var(--gold);">Button HTML</h3>
+        <div class="code-block">
+&lt;<span class="code-keyword">a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary"</span>&gt;
+  Primary Action 
+  &lt;<span class="code-keyword">i</span> <span class="code-attr">class</span>=<span class="code-string">"fa-solid fa-arrow-right"</span>&gt;&lt;/<span class="code-keyword">i</span>&gt;
+&lt;/<span class="code-keyword">a</span>&gt;
+        </div>
+      </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="showcase-section">
+      <div class="showcase-container">
+        <h2 class="showcase-title">Card Components</h2>
+        <div class="showcase-grid">
+          <div class="card">
+            <div class="service-card">
+              <div class="service-card-icon">🎨</div>
+              <h3>UI/UX Design</h3>
+              <p>Beautiful and functional designs that engage users and drive conversions.</p>
+              <a href="#" style="color: var(--gold); margin-top: auto;">Learn More →</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="service-card">
+              <div class="service-card-icon">💻</div>
+              <h3>Web Development</h3>
+              <p>Fast, scalable, and SEO-optimized websites built with modern technologies.</p>
+              <a href="#" style="color: var(--gold); margin-top: auto;">Learn More →</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="service-card">
+              <div class="service-card-icon">📱</div>
+              <h3>App Development</h3>
+              <p>Native and cross-platform applications for iOS, Android, and web platforms.</p>
+              <a href="#" style="color: var(--gold); margin-top: auto;">Learn More →</a>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md); color: var(--gold);">Card HTML</h3>
+        <div class="code-block">
+&lt;<span class="code-keyword">div</span> <span class="code-attr">class</span>=<span class="code-string">"card"</span>&gt;
+  &lt;<span class="code-keyword">div</span> <span class="code-attr">class</span>=<span class="code-string">"service-card"</span>&gt;
+    &lt;<span class="code-keyword">div</span> <span class="code-attr">class</span>=<span class="code-string">"service-card-icon"</span>&gt;🎨&lt;/<span class="code-keyword">div</span>&gt;
+    &lt;<span class="code-keyword">h3</span>&gt;Service Title&lt;/<span class="code-keyword">h3</span>&gt;
+    &lt;<span class="code-keyword">p</span>&gt;Description&lt;/<span class="code-keyword">p</span>&gt;
+  &lt;/<span class="code-keyword">div</span>&gt;
+&lt;/<span class="code-keyword">div</span>&gt;
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography Section -->
+    <section class="showcase-section">
+      <div class="showcase-container">
+        <h2 class="showcase-title">Typography System</h2>
+        <div style="background: rgba(29, 29, 29, 0.5); border: 1px solid rgba(255, 215, 0, 0.1); padding: var(--spacing-lg); border-radius: 12px;">
+          <div class="typography-demo">
+            <h1>Heading Level 1 (Display)</h1>
+            <h2>Heading Level 2 (Feature)</h2>
+            <h3>Heading Level 3 (Section)</h3>
+            <h4>Heading Level 4 (Subsection)</h4>
+            <p style="max-width: 100%; margin-top: var(--spacing-md);">
+              <strong>Body text with improved readability:</strong> The typography system uses responsive scaling with the CSS `clamp()` function to ensure perfect readability across all device sizes. Line height is set to 1.65 for optimal reading comfort and text is kerned at 0.3px for a more refined appearance.
+            </p>
+            <p style="max-width: 100%; margin-top: var(--spacing-sm); color: var(--muted);">
+              <em>Muted text for secondary information and supporting details that don't require immediate attention.</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Forms Section -->
+    <section class="showcase-section">
+      <div class="showcase-container">
+        <h2 class="showcase-title">Form Components</h2>
+        <div style="background: rgba(29, 29, 29, 0.5); border: 1px solid rgba(255, 215, 0, 0.1); padding: var(--spacing-lg); border-radius: 12px; max-width: 500px;">
+          <form class="form-demo">
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Name</label>
+              <input type="text" placeholder="Enter your full name" />
+            </div>
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email</label>
+              <input type="email" placeholder="hello@example.com" />
+            </div>
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Message</label>
+              <textarea placeholder="Tell us about your project..."></textarea>
+            </div>
+            <div style="display: flex; gap: var(--spacing-sm);">
+              <button class="btn btn-primary" style="flex: 1;">Send Message</button>
+              <button class="btn btn-outline" style="flex: 1;" type="reset">Clear</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Badges Section -->
+    <section class="showcase-section">
+      <div class="showcase-container">
+        <h2 class="showcase-title">Badges & Labels</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-md); padding: var(--spacing-lg); background: rgba(29, 29, 29, 0.5); border-radius: 12px;">
+          <span class="badge">Featured</span>
+          <span class="badge">New</span>
+          <span class="badge">Popular</span>
+          <span class="badge">Limited Time</span>
+          <span class="badge">On Sale</span>
+          <span class="badge">Exclusive</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animations Section -->
+    <section class="showcase-section">
+      <div class="showcase-container">
+        <h2 class="showcase-title">Animations & Interactions</h2>
+        <p style="text-align: center; color: var(--muted); margin-bottom: var(--spacing-lg);">Hover over the box to see animation effects</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-lg);">
+          <div class="showcase-item">
+            <h3>Slide Up</h3>
+            <div class="animation-demo" style="animation: slideUp 2s infinite;">↑</div>
+          </div>
+          <div class="showcase-item">
+            <h3>Fade In</h3>
+            <div class="animation-demo" style="animation: pulse 2s infinite;">●</div>
+          </div>
+          <div class="showcase-item">
+            <h3>Glow</h3>
+            <div class="animation-demo" style="animation: glow 2s infinite;">✦</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessibility Section -->
+    <section class="showcase-section">
+      <div class="showcase-container">
+        <h2 class="showcase-title">Accessibility Features</h2>
+        <div class="showcase-grid">
+          <div class="showcase-item">
+            <h3>🎯 Focus States</h3>
+            <p style="color: var(--light);">All interactive elements have clear, visible focus indicators for keyboard navigation</p>
+          </div>
+          <div class="showcase-item">
+            <h3>♿ WCAG 2.1 AA</h3>
+            <p style="color: var(--light);">Meets accessibility standards with proper color contrast and semantic HTML</p>
+          </div>
+          <div class="showcase-item">
+            <h3>⌨️ Keyboard Nav</h3>
+            <p style="color: var(--light);">Full keyboard navigation support with logical tab order throughout</p>
+          </div>
+          <div class="showcase-item">
+            <h3>🎨 Color Contrast</h3>
+            <p style="color: var(--light);">All text meets minimum 4.5:1 contrast ratio for readability</p>
+          </div>
+          <div class="showcase-item">
+            <h3>✍️ Reduced Motion</h3>
+            <p style="color: var(--light);">Respects user preferences for reduced motion and animations</p>
+          </div>
+          <div class="showcase-item">
+            <h3>📱 Responsive</h3>
+            <p style="color: var(--light);">Fully responsive design that works across all device sizes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Getting Started Section -->
+    <section class="showcase-section">
+      <div class="showcase-container">
+        <h2 class="showcase-title">Getting Started</h2>
+        <div style="background: rgba(29, 29, 29, 0.5); border: 1px solid rgba(255, 215, 0, 0.1); padding: var(--spacing-lg); border-radius: 12px; margin-bottom: var(--spacing-lg);">
+          <h3 style="color: var(--gold); margin-bottom: var(--spacing-md);">Step 1: Link the improved stylesheet</h3>
+          <div class="code-block">
+&lt;<span class="code-keyword">link</span> <span class="code-attr">rel</span>=<span class="code-string">"stylesheet"</span> <span class="code-attr">href</span>=<span class="code-string">"Style/style-improved.css"</span> /&gt;
+          </div>
+
+          <h3 style="color: var(--gold); margin-bottom: var(--spacing-md); margin-top: var(--spacing-lg);">Step 2: Use the component classes</h3>
+          <div class="code-block">
+&lt;<span class="code-keyword">a</span> <span class="code-attr">href</span>=<span class="code-string">"#"</span> <span class="code-attr">class</span>=<span class="code-string">"btn btn-primary"</span>&gt;
+  Click Me &lt;<span class="code-keyword">i</span> <span class="code-attr">class</span>=<span class="code-string">"fa-solid fa-arrow-right"</span>&gt;&lt;/<span class="code-keyword">i</span>&gt;
+&lt;/<span class="code-keyword">a</span>&gt;
+          </div>
+
+          <h3 style="color: var(--gold); margin-bottom: var(--spacing-md); margin-top: var(--spacing-lg);">Step 3: Customize with CSS variables</h3>
+          <div class="code-block">
+:<span class="code-keyword">root</span> {
+  <span class="code-attr">--gold:</span> <span class="code-string">#your-color;</span>
+  <span class="code-attr">--spacing-lg:</span> <span class="code-string">3rem;</span>
+}
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <p style="color: var(--light); margin-bottom: var(--spacing-md);">
+            For detailed documentation, see <strong>UI-IMPROVEMENTS.md</strong>
+          </p>
+          <a href="#" class="btn btn-primary">
+            Read Full Documentation <i class="fa-solid fa-book"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-demo">
+    <div class="showcase-container">
+      <h3 style="margin-bottom: var(--spacing-md); color: var(--gold);">Quick Links</h3>
+      <div class="footer-links">
+        <div>
+          <h4 style="color: var(--ivory); margin-bottom: var(--spacing-sm);">Company</h4>
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+        </div>
+        <div>
+          <h4 style="color: var(--ivory); margin-bottom: var(--spacing-sm);">Resources</h4>
+          <a href="#docs">Documentation</a>
+          <a href="#components">Components</a>
+          <a href="#design">Design System</a>
+        </div>
+        <div>
+          <h4 style="color: var(--ivory); margin-bottom: var(--spacing-sm);">Legal</h4>
+          <a href="#privacy">Privacy</a>
+          <a href="#terms">Terms</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <div style="border-top: 1px solid rgba(255, 215, 0, 0.1); margin-top: var(--spacing-xl); padding-top: var(--spacing-md); text-align: center; color: var(--muted);">
+        <p>&copy; 2026 Cyber Creative. Improved UI Design System v2.0</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple demo animation trigger
+    document.querySelectorAll('.animation-demo').forEach(el => {
+      el.addEventListener('click', function() {
+        this.style.animation = 'none';
+        setTimeout(() => {
+          this.style.animation = '';
+        }, 10);
+      });
+    });
+
+    // Keyboard focus outline helper (accessibility)
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab') {
+        document.body.classList.add('keyboard-nav');
+      }
+    });
+
+    document.addEventListener('mousedown', function() {
+      document.body.classList.remove('keyboard-nav');
+    });
+  </script>
+</body>
+</html>

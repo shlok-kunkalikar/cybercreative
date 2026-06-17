@@ -41,3 +41,21 @@
       transition: width 0.1s linear;
     }
   
+
+/* ── v8 index enhancements ── */
+:root {
+  --gold: #E8C84A;
+  --gold-dim: rgba(232, 200, 74, 0.14);
+}
+
+/* Stronger orb glow on homepage */
+.hero-bg-orb {
+  background: radial-gradient(circle at 38% 38%,
+    rgba(232,200,74,0.24) 0%,
+    rgba(232,200,74,0.09) 42%,
+    transparent 72%);
+  filter: blur(4px);
+}
+
+/* Magnetic button: no cursor override on hover */
+.magnetic:hover { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }

@@ -1,32 +1,58 @@
 /* =============================================
-   CYBER CREATIVE — Premium style.css
-   Palette: Black · Charcoal · Ivory · Yellow
+   CYBER CREATIVE — Improved Premium UI
+   Palette: Deep Black · Charcoal · Cream · Gold
    ============================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
 
-/* ── TOKENS ─────────────────────────────────── */
+/* ── DESIGN TOKENS ─────────────────────────────── */
 :root {
-  --black:    #080808;
-  --dark:     #111111;
-  --charcoal: #1a1a1a;
-  --mid:      #2c2c2c;
-  --dim:      #444444;
+  /* Neutrals - Refined Dark Palette */
+  --black:    #0a0a0a;
+  --dark:     #121212;
+  --charcoal: #1e1e1e;
+  --mid:      #2d2d2d;
+  --dim:      #474747;
   --muted:    #888888;
-  --light:    #cccccc;
-  --ivory:    #f0ede6;
-  --white:    #fafafa;
-  --gold:     #ffd017;
-  --gold-dim: #e6b800;
-  --gold-pale:#ffe566;
+  --light:    #d0d0d0;
+  --ivory:    #f5f2ed;
+  --white:    #fefdfb;
+  
+  /* Primary Accent - Premium Gold */
+  --gold:      #ffd700;
+  --gold-dim:  #d4a017;
+  --gold-pale: #fff8e7;
+  --gold-dark: #cc6600;
+  
+  /* Secondary Accents - Depth */
+  --accent-blue: #0099ff;
+  --accent-teal: #00d9d9;
+  --success:     #4ade80;
+  --danger:      #ff5555;
 
+  /* Typography */
   --font-display: 'Bebas Neue', sans-serif;
   --font-body:    'Syne', sans-serif;
   --font-mono:    'Space Mono', monospace;
 
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in:  cubic-bezier(0.7, 0, 0.84, 0);
-  --ease-io:  cubic-bezier(0.87, 0, 0.13, 1);
+  /* Animation Tokens */
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:   cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-io:   cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Spacing Scale */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+  --spacing-2xl: 6rem;
+  
+  /* Shadows - Refined */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.4);
+  --shadow-lg: 0 20px 40px rgba(0,0,0,0.5);
 }
 
 /* ── RESET ───────────────────────────────────── */
@@ -2548,4 +2574,325 @@ body.cursor-view  .cursor-outline {
   color: var(--gold);
   font-size: 1.25rem;
   min-width: 24px;
+}
+/* ═══════════════════════════════════════════════
+   UI ENHANCEMENTS v8 — Visual Polish Layer
+   Improves: spacing, shadows, transitions, glow,
+   card depth, typography rhythm, subtle gradients
+═══════════════════════════════════════════════ */
+
+/* ── Refined token overrides ── */
+:root {
+  --gold:     #E8C84A;
+  --gold-dim: #c9a828;
+  --gold-pale:#fff0a0;
+  --shadow-gold: 0 0 30px rgba(232,200,74,0.18), 0 0 80px rgba(232,200,74,0.06);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.3);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Scrollbar refinement ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, var(--gold), var(--gold-dim)); border-radius: 3px; }
+
+/* ── Navbar glass improvement ── */
+#navbar.scrolled {
+  background: rgba(8,8,8,0.88);
+  backdrop-filter: blur(28px) saturate(1.6);
+  -webkit-backdrop-filter: blur(28px) saturate(1.6);
+  border-bottom: 1px solid rgba(232,200,74,0.12);
+  box-shadow: 0 1px 0 rgba(232,200,74,0.06), 0 8px 32px rgba(0,0,0,0.4);
+}
+
+/* ── Nav link underline glow ── */
+.nav-link::after {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  box-shadow: 0 0 6px var(--gold);
+}
+
+/* ── Nav CTA button glow on hover ── */
+.nav-cta:hover {
+  box-shadow: 0 0 20px rgba(232,200,74,0.3), inset 0 0 12px rgba(232,200,74,0.08);
+}
+
+/* ── Preloader bar gradient ── */
+.preloader-bar span {
+  background: linear-gradient(to right, var(--gold-dim), var(--gold), var(--gold-pale));
+}
+
+/* ── Hero orb — richer glow ── */
+.hero-bg-orb {
+  background: radial-gradient(circle at 38% 38%,
+    rgba(232,200,74,0.22) 0%,
+    rgba(232,200,74,0.08) 40%,
+    rgba(232,200,74,0.02) 65%,
+    transparent 75%);
+  filter: blur(2px);
+}
+
+/* ── Hero sub: slightly warmer ── */
+.hero-sub { color: rgba(240,237,230,0.52); letter-spacing: 0.01em; }
+
+/* ── Scroll progress bar gradient ── */
+#scrollProgress {
+  background: linear-gradient(to right, var(--gold-dim), var(--gold), var(--gold-pale));
+  box-shadow: 0 0 8px rgba(232,200,74,0.5);
+}
+
+/* ── Ticker: hover glow ── */
+.ticker span:hover {
+  color: var(--gold);
+  text-shadow: 0 0 16px rgba(232,200,74,0.4);
+}
+.ticker-sep {
+  color: var(--gold) !important;
+  text-shadow: 0 0 8px rgba(232,200,74,0.5) !important;
+}
+
+/* ── Section label line — gradient ── */
+.section-label::before {
+  background: linear-gradient(to right, var(--gold), transparent);
+}
+
+/* ── Story image: richer shadow ── */
+.story-img {
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  filter: grayscale(0.1) contrast(1.08) brightness(0.97);
+}
+.story-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border: 1px solid rgba(232,200,74,0.1);
+  pointer-events: none;
+}
+
+/* ── HR accent glow ── */
+.hr-accent {
+  background: linear-gradient(to right, var(--gold), var(--gold-dim));
+  box-shadow: 0 0 12px rgba(232,200,74,0.3);
+  border-radius: 2px;
+}
+
+/* ── Service preview cards ── */
+.sp-card {
+  transition: background var(--transition-smooth), transform var(--transition-smooth);
+}
+.sp-card:hover {
+  background: rgba(232,200,74,0.04);
+  transform: translateY(-2px);
+}
+.sp-card:hover::after {
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.sp-card:hover .sp-icon {
+  filter: drop-shadow(0 0 10px rgba(232,200,74,0.4));
+  transform: scale(1.2) translateY(-2px);
+}
+
+/* ── Numbers section ── */
+.num-card {
+  transition: background var(--transition-smooth);
+}
+.num-card:hover { background: rgba(232,200,74,0.03); }
+.num-big .suf { text-shadow: 0 0 16px rgba(232,200,74,0.35); }
+
+/* ── Portfolio collage image ── */
+.collage-img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  filter: grayscale(0.15) contrast(1.05);
+}
+.collage-cell:hover .collage-img {
+  transform: scale(1.05);
+  filter: grayscale(0) contrast(1.08) brightness(1.02);
+}
+.collage-overlay {
+  background: linear-gradient(to top, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.5) 55%, transparent 100%);
+}
+.collage-idx {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  opacity: 0.7;
+  text-shadow: 0 0 10px rgba(232,200,74,0.3);
+}
+
+/* ── Process step hover ── */
+.step-title { transition: color var(--transition-smooth); }
+.process-step:hover .step-title { color: var(--gold); }
+.process-step:hover .step-num {
+  background: rgba(232,200,74,0.1);
+  box-shadow: 0 0 16px rgba(232,200,74,0.2);
+}
+.process-steps::before {
+  background: linear-gradient(to right, transparent 0%, var(--mid) 15%, var(--mid) 85%, transparent 100%);
+}
+
+/* ── Home CTA: subtle gradient bg ── */
+.home-cta-section {
+  background: linear-gradient(165deg, var(--charcoal) 0%, #141414 50%, var(--charcoal) 100%);
+}
+.home-cta-title em { text-shadow: 0 0 40px rgba(232,200,74,0.25); }
+
+/* ── Buttons: enhanced ── */
+.btn-primary {
+  box-shadow: 0 4px 20px rgba(232,200,74,0.2);
+}
+.btn-primary:hover {
+  box-shadow: 0 8px 32px rgba(232,200,74,0.35), 0 0 0 1px rgba(232,200,74,0.2);
+  transform: translateY(-3px);
+}
+.btn-outline:hover {
+  box-shadow: 0 0 20px rgba(232,200,74,0.1);
+  transform: translateY(-3px);
+}
+
+/* ── Footer ── */
+.footer {
+  background: linear-gradient(180deg, #080808 0%, #060606 100%);
+  border-top: 1px solid rgba(232,200,74,0.12);
+  position: relative;
+}
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(232,200,74,0.2), transparent);
+  pointer-events: none;
+}
+
+.footer-logo {
+  transition: opacity var(--transition-smooth);
+  opacity: 0.85;
+}
+.footer-logo:hover { opacity: 1; }
+
+.footer-socials a {
+  border-radius: 4px;
+  transition: border-color 0.25s, color 0.25s, background 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.footer-socials a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(232,200,74,0.08);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 16px rgba(232,200,74,0.2);
+}
+
+/* ── Footer column headings: gold underline ── */
+.footer-links h4, .footer-contact h4 {
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+.footer-links h4::after, .footer-contact h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 24px; height: 1px;
+  background: var(--gold);
+  box-shadow: 0 0 6px rgba(232,200,74,0.4);
+}
+
+/* ── Footer links: subtle left-shift hover ── */
+.footer-links a {
+  transition: color 0.2s, padding-left 0.2s;
+}
+.footer-links a:hover {
+  color: var(--ivory);
+  padding-left: 5px;
+}
+
+/* ── Footer bottom ── */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding-top: 1.5rem;
+}
+.footer-bottom a:hover {
+  color: var(--gold-pale);
+  text-shadow: 0 0 12px rgba(232,200,74,0.4);
+}
+
+/* ── Footer CTA glow ── */
+.footer-cta:hover { box-shadow: 0 4px 16px rgba(232,200,74,0.2); }
+
+/* ── Back to top button ── */
+.back-to-top:hover {
+  background: rgba(232,200,74,0.1);
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: 0 0 20px rgba(232,200,74,0.25);
+  transform: translateY(-3px);
+}
+
+/* ── Why-us cards ── */
+.whyus-card {
+  transition: background var(--transition-smooth), transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+.whyus-card:hover {
+  background: rgba(232,200,74,0.04);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 32px rgba(232,200,74,0.06);
+}
+.whyus-card:hover .wc-icon {
+  filter: drop-shadow(0 0 10px rgba(232,200,74,0.45));
+}
+.whyus-card::after {
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+/* ── Portfolio filter active ── */
+.pf-btn.active {
+  text-shadow: 0 0 12px rgba(232,200,74,0.3);
+}
+
+/* ── Gold glow helper ── */
+.gold-glow {
+  text-shadow:
+    0 0 20px rgba(232,200,74,0.45),
+    0 0 60px rgba(232,200,74,0.15),
+    0 0 100px rgba(232,200,74,0.06);
+}
+
+/* ── Connect socials ── */
+.connect-socials a:hover {
+  box-shadow: 0 0 0 1px rgba(232,200,74,0.15), 0 0 24px rgba(232,200,74,0.18);
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* ── Dots bg refinement ── */
+.dots-bg {
+  background-image: radial-gradient(rgba(232,200,74,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Title underline gradient ── */
+.title-underline {
+  background: linear-gradient(to right, var(--gold), var(--gold-dim), transparent);
+  border-radius: 2px;
+}
+
+/* ── Map wrap ── */
+.map-wrap {
+  box-shadow: 0 0 0 1px rgba(232,200,74,0.1), 0 0 60px rgba(232,200,74,0.04);
+}
+
+/* ── Horizontal scroll cards ── */
+.hscroll-card:hover {
+  border-color: rgba(232,200,74,0.4);
+  box-shadow: 0 8px 40px rgba(232,200,74,0.1), 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* ── Arc sub-cards ── */
+.arc-sub-card:hover {
+  background: rgba(232,200,74,0.06);
+  box-shadow: inset 0 0 0 1px rgba(232,200,74,0.12);
+}
+
+/* ── Accessibility focus ring ── */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
