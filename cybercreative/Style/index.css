@@ -1,4 +1,4 @@
-    /* ── Hero parallax layers ── */
+/* ── Hero parallax layers ── */
     .hero-parallax-orb  { will-change: transform; }
     .hero-parallax-text { will-change: transform; }
 
@@ -40,13 +40,8 @@
       z-index: 9999;
       transition: width 0.1s linear;
     }
-  
 
 /* ── v8 index enhancements ── */
-:root {
-  --gold: #E8C84A;
-  --gold-dim: rgba(232, 200, 74, 0.14);
-}
 
 /* Stronger orb glow on homepage */
 .hero-bg-orb {
