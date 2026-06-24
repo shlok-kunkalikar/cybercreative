@@ -154,7 +154,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 3rem 4rem;
+  gap: 3rem 4.5rem;
   background: transparent;
   border: none;
   padding: 1rem 0 2rem;
@@ -185,8 +185,8 @@
 
 /* Logos: dimmed at rest, bright on hover */
 .logo-free-item img {
-  max-width: 120px;
-  max-height: 52px;
+  max-width: 160px;
+  max-height: 68px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -300,7 +300,11 @@
 /* ── RESPONSIVE ──────────────────────────────── */
 @media (max-width: 860px) {
   .logos-section {
-    padding: 5rem 5vw 7rem;
+    padding: 5rem 5vw 6rem;
+  }
+
+  .sec-header {
+    margin-bottom: 3rem;
   }
 
   .logos-free-grid {
@@ -308,12 +312,17 @@
   }
 
   .logo-free-item img {
-    max-width: 88px;
-    max-height: 40px;
+    max-width: 110px;
+    max-height: 50px;
   }
 
   .client-stats {
     grid-template-columns: 1fr;
+    margin-bottom: 3.5rem;
+  }
+
+  .client-stat {
+    padding: 2.2rem 2rem;
   }
 
   .client-stat:not(:last-child) {
@@ -322,6 +331,7 @@
   }
 
   .client-cta-strip {
+    margin-top: 4rem;
     flex-direction: column;
     padding: 2.5rem 2rem;
     text-align: center;
@@ -339,12 +349,41 @@
 }
 
 @media (max-width: 480px) {
+  .logos-section {
+    padding: 4rem 6vw 5rem;
+  }
+
+  .sec-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .sec-sub {
+    max-width: 100%;
+  }
+
   .logos-free-grid {
     gap: 1.5rem 2rem;
   }
 
   .logo-free-item img {
-    max-width: 70px;
-    max-height: 32px;
+    max-width: 90px;
+    max-height: 40px;
+  }
+
+  .client-stats {
+    margin-bottom: 2.5rem;
+  }
+
+  .client-stat {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .client-cta-strip {
+    margin-top: 3rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .cta-strip-text h3 {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
   }
 }
