@@ -148,101 +148,70 @@
 }
 
 /* ── LOGO GRID ───────────────────────────────── */
-/* 1-px gap grid technique — tight mosaic look */
+/* Open floating layout — no boxes, no borders, logos breathe freely */
 .logos-free-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
-  gap: 1px;
-  background: var(--mid);      /* gap colour = mid border */
-  border: 1px solid var(--mid);
-  border-radius: 2px;
-  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem 4rem;
+  background: transparent;
+  border: none;
+  padding: 1rem 0 2rem;
 }
 
 /* ── LOGO ITEM ───────────────────────────────── */
 .logo-free-item {
-  background: var(--charcoal);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1.5rem;
-  min-height: 96px;
+  padding: 0;
+  min-height: unset;
   position: relative;
-  transition: background var(--transition-base);
-  overflow: hidden;
+  transition: transform var(--transition-base);
+  overflow: visible;
 }
 
-/* Gold shimmer on hover — matches .btn::before pattern */
-.logo-free-item::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(232, 200, 74, 0.06),
-    transparent
-  );
-  transform: translateX(-100%);
-  transition: transform 0.5s var(--ease-out);
+.logo-free-item::before,
+.logo-free-item::after {
+  display: none;
 }
 
 .logo-free-item:hover {
-  background: var(--dark);
+  background: transparent;
+  transform: translateY(-3px);
 }
 
-.logo-free-item:hover::before {
-  transform: translateX(100%);
-}
-
-/* Gold accent bottom bar — matches .client-stat::before */
-.logo-free-item::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 1px;
-  background: var(--gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s var(--ease-out);
-}
-
-.logo-free-item:hover::after {
-  transform: scaleX(1);
-}
-
-/* Logos: greyscale dim at rest, full colour on hover */
+/* Logos: dimmed at rest, bright on hover */
 .logo-free-item img {
-  max-width: 115px;
-  max-height: 48px;
+  max-width: 120px;
+  max-height: 52px;
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: brightness(0.85);
+
   transition:
     filter var(--transition-slow),
     transform var(--transition-base);
   display: block;
-  margin: auto;
-  position: relative;
-  z-index: 1;
 }
 
 .logo-free-item:hover img {
-  filter: brightness(1);
-  transform: scale(1.07);
+  filter: brightness(1.05);
+  transform: scale(1.08);
 }
 
-/* Dark logos inverted — retains same hover reveal */
+/* Dark logos inverted */
 .logo-free-item.dark-invert img {
-  filter: brightness(0.85) invert(1);
+  filter: invert(1);
 }
 
 .logo-free-item.dark-invert:hover img {
-  filter: brightness(1) invert(1);
+  filter: invert(1) brightness(1.1);
 }
 
-/* Fallback text (onerror) — matches .footer-links a style */
+/* Fallback text (onerror) */
 .logo-name {
   font-family: var(--font-body);
   font-size: 0.72rem;
@@ -252,13 +221,11 @@
   color: var(--dim);
   text-align: center;
   line-height: 1.4;
-  position: relative;
-  z-index: 1;
   transition: color var(--transition-base);
 }
 
 .logo-free-item:hover .logo-name {
-  color: var(--ivory);
+  color: var(--gold);
 }
 
 /* ── CLIENT CTA STRIP ────────────────────────── */
@@ -337,17 +304,12 @@
   }
 
   .logos-free-grid {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  }
-
-  .logo-free-item {
-    padding: 1.5rem 1rem;
-    min-height: 78px;
+    gap: 2rem 2.5rem;
   }
 
   .logo-free-item img {
     max-width: 88px;
-    max-height: 38px;
+    max-height: 40px;
   }
 
   .client-stats {
@@ -378,16 +340,11 @@
 
 @media (max-width: 480px) {
   .logos-free-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .logo-free-item {
-    padding: 1.2rem 0.6rem;
-    min-height: 68px;
+    gap: 1.5rem 2rem;
   }
 
   .logo-free-item img {
     max-width: 70px;
-    max-height: 30px;
+    max-height: 32px;
   }
 }
