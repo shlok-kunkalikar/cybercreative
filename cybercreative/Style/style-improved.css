@@ -815,8 +815,9 @@ body.cursor-view .cursor-outline {
   animation: fade-up 1s var(--ease-out) forwards;
 }
 .hero-title-line:nth-child(1) { animation-delay: 0.6s; }
-.hero-title-line:nth-child(2) { animation-delay: 0.78s; color: var(--gold); }
-.hero-title-line:nth-child(3) { animation-delay: 0.96s; }
+.hero-title-line:nth-child(2) { animation-delay: 0.78s; }
+.hero-title-line:nth-child(3) { animation-delay: 0.96s; } /* color: gold set inline in HTML */
+.hero-title-line:nth-child(4) { animation-delay: 1.14s; }
 
 @keyframes fade-up {
   to { opacity: 1; transform: translateY(0); }
@@ -3186,4 +3187,246 @@ a:focus-visible, button:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 3px;
   border-radius: 2px;
+}
+/* ═══════════════════════════════════════════════
+   IMPROVEMENTS v9 — June 2025
+   Fixes: hero 4-line animation, collage overlay
+   always visible on mobile, reduced motion,
+   hero stats spacing, section contrast polish,
+   process step connecting line fill, mobile nav
+   close on link click, footer WhatsApp link.
+═══════════════════════════════════════════════ */
+
+/* ── Reduced motion: respect OS preference ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .ticker { animation: none; }
+  .hero-title-line,
+  .hero-tag,
+  .hero-sub,
+  .hero-actions,
+  .hero-stats,
+  .scroll-cue {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ── Hero: fix sub-text margin for 4-line title ── */
+.hero-title {
+  margin-top: 7rem;
+}
+
+/* ── Hero sub and actions: bump animation delay to allow 4 lines ── */
+.hero-sub {
+  animation-delay: 1.35s;
+}
+.hero-actions {
+  animation-delay: 1.5s;
+}
+.hero-stats {
+  animation-delay: 1.65s;
+}
+.scroll-cue {
+  animation-delay: 2s;
+}
+
+/* ── Hero title: ensure the inline gold style on "DIGITAL" 
+      stays gold even if any CSS override tries to change it ── */
+.hero-title-line[style*="color:var(--gold)"],
+.hero-title-line[style*="color: var(--gold)"] {
+  color: var(--gold) !important;
+  text-shadow: 0 0 40px rgba(232,200,74,0.25), 0 0 80px rgba(232,200,74,0.1);
+}
+
+/* ── Collage: show overlay info always on touch devices ── */
+@media (hover: none) {
+  .collage-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.3) 50%, transparent 100%);
+  }
+  .collage-cat,
+  .collage-name { transform: translateY(0); }
+  .collage-link { transform: translateY(0); opacity: 1; }
+}
+
+/* ── Process steps: animated connector line fill on scroll ── */
+.process-steps {
+  --line-fill: 0%;
+}
+.process-steps::before {
+  width: 0;
+  width: var(--line-fill, 0%);
+  transition: width 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+  background: linear-gradient(to right, var(--gold), var(--gold-dim), var(--mid));
+}
+.process-section.in-view .process-steps::before {
+  width: 100%;
+}
+
+/* ── Process step active: gold dot indicator ── */
+.process-step.active .step-num::after,
+.process-step:hover .step-num::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 0 0 2px rgba(232,200,74,0.2);
+}
+.step-num { position: relative; }
+
+/* ── Services preview: stagger the card border-bottom line ── */
+.sp-card:nth-child(1)::after { transition-delay: 0s; }
+.sp-card:nth-child(2)::after { transition-delay: 0.05s; }
+.sp-card:nth-child(3)::after { transition-delay: 0.1s; }
+.sp-card:nth-child(4)::after { transition-delay: 0s; }
+.sp-card:nth-child(5)::after { transition-delay: 0.05s; }
+.sp-card:nth-child(6)::after { transition-delay: 0.1s; }
+
+/* ── Numbers section: left border gold on hover ── */
+.num-card {
+  border-left: 2px solid transparent;
+  transition: background var(--transition-smooth), border-left-color 0.3s;
+}
+.num-card:hover {
+  border-left-color: var(--gold);
+}
+.num-card:first-child {
+  border-left: none;
+}
+
+/* ── Story section: slight depth improvement ── */
+.story-section {
+  background: linear-gradient(180deg, var(--black) 0%, #0e0e0e 100%);
+}
+
+/* ── Home CTA title: italic em gets font styling ── */
+.home-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 8vw, 9rem);
+  line-height: 0.94;
+  color: var(--white);
+}
+.home-cta-title em {
+  font-style: normal;
+  color: var(--gold);
+  display: block;
+}
+
+/* ── Footer: add WhatsApp social icon ── */
+.footer-contact .wa-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.footer-contact .wa-link:hover {
+  color: #25d366;
+}
+
+/* ── Collage section: gap improvement ── */
+.collage-grid {
+  gap: 4px;
+}
+
+/* ── Portfolio filter: smoother filtered-out state ── */
+.case-study.filtered-out {
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+}
+.case-study {
+  transition: opacity 0.4s var(--ease-smooth), transform 0.4s var(--ease-smooth);
+}
+
+/* ── Navbar brand name: responsive ── */
+@media (max-width: 420px) {
+  .nav-brand-name {
+    display: none;
+  }
+}
+
+/* ── Mobile: improve touch targets for hamburger ── */
+@media (max-width: 900px) {
+  .hamburger {
+    padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* ── Page banner: slightly less padding on mobile ── */
+@media (max-width: 560px) {
+  .page-banner {
+    padding: 6rem 6vw 4rem;
+  }
+  .page-banner-title {
+    font-size: clamp(2.8rem, 12vw, 5rem);
+  }
+}
+
+/* ── Hero: better mobile layout ── */
+@media (max-width: 560px) {
+  .hero-title {
+    margin-top: 5rem;
+    font-size: clamp(3rem, 16vw, 8rem);
+  }
+  .hero-stats {
+    gap: 1.5rem;
+  }
+  .stat-divider {
+    height: 35px;
+  }
+}
+
+/* ── Ticker: ensure it scrolls properly ── */
+.ticker {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ── Section label: consistent spacing on all pages ── */
+.page-banner .section-label {
+  margin-bottom: 1rem;
+}
+
+/* ── Back to top: ensure visible on mobile too ── */
+.back-to-top {
+  z-index: 990;
+}
+
+/* ── Connect form: textarea height on mobile ── */
+@media (max-width: 600px) {
+  #message {
+    min-height: 120px;
+  }
+}
+
+/* ── Collage section: fix 5th/6th cell on tablet ── */
+@media (max-width: 860px) and (min-width: 561px) {
+  .collage-cell:nth-child(5),
+  .collage-cell:nth-child(6) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+/* ── Preconnect to cybercreative.in removed — 
+      all logos now loaded via external URL; 
+      no preconnect needed as it's cross-origin ── */
+
+/* ── SEO: ensure main headings have clear hierarchy colour ── */
+.page-banner-title {
+  color: var(--white);
+}
+.page-banner-title .yellow-text {
+  color: var(--gold);
 }

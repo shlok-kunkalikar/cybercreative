@@ -156,6 +156,20 @@ document.addEventListener('DOMContentLoaded', () => {
     stepCards.forEach(c => sio.observe(c));
   }
 
+  /* ─── PROCESS SECTION LINE FILL ──────────────── */
+  const processSection = document.querySelector('.process-section');
+  if (processSection) {
+    const pio2 = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          processSection.classList.add('in-view');
+          pio2.unobserve(processSection);
+        }
+      });
+    }, { threshold: 0.3 });
+    pio2.observe(processSection);
+  }
+
   /* ─── ANIMATED COUNTERS ───────────────────── */
   function triggerCounters() {
     document.querySelectorAll('.stat-num[data-count]').forEach(el => {
@@ -309,6 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ───────────────────────────────────────────────────── */
   const pfBtns  = document.querySelectorAll('.pf-btn');
   const cases   = document.querySelectorAll('#portfolioCases .case-study');
+  const pfCount = document.getElementById('pfCount');
 
   if (pfBtns.length && cases.length) {
     pfBtns.forEach(btn => {
@@ -316,6 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pfBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const filter = btn.dataset.filter;
+        let visibleCount = 0;
 
         cases.forEach((c, i) => {
           const cat = c.dataset.cat || 'web';
@@ -323,11 +339,15 @@ document.addEventListener('DOMContentLoaded', () => {
           if (show) {
             c.classList.remove('filtered-out');
             c.style.transitionDelay = (i * 0.06) + 's';
+            visibleCount++;
           } else {
             c.classList.add('filtered-out');
             c.style.transitionDelay = '0s';
           }
         });
+
+        // Update count display
+        if (pfCount) pfCount.textContent = visibleCount;
       });
     });
   }
